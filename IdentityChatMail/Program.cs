@@ -1,6 +1,14 @@
+using IdentityChatMail.Context;
+using IdentityChatMail.Entities;
+using IdentityChatMail.Models;
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<MailContext>();
+builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<MailContext>().AddErrorDescriber<CustomIdentityValidator>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
