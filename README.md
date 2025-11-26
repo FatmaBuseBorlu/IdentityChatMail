@@ -1,14 +1,6 @@
-<div align="center">
+<h1 style="border-bottom: none;">📧 IdentityMail – Modern Kurumsal İçi Mesajlaşma Sistemi</h1>
 
-  <img src="https://cdn-icons-png.flaticon.com/512/9069/9069049.png" alt="IdentityMail Logo" width="100" height="100" />
-  
-  <br>
-
-  <h1 style="border-bottom: none;">
-    📧 IdentityMail – Modern Kurumsal İçi Mesajlaşma Sistemi
-  </h1>
-
-  <br>
+---
 
 ## 🚀 Proje Hakkında
 
