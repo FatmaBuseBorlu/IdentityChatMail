@@ -33,7 +33,7 @@ Proje, standart bir CRUD uygulamasının ötesine geçerek; **Soft Delete (Çöp
 
 ---
 
-## 📸 Proje Ekran Görüntüleri
+## 📸 Proje Görselleri
 
 Uygulamanın modern arayüzünden kareler:
 
