@@ -1,27 +1,35 @@
 <div align="center">
 
-  <img src="https://cdn-icons-png.flaticon.com/512/9069/9069049.png" alt="logo" width="100" height="100" />
+  <img src="https://cdn-icons-png.flaticon.com/512/9069/9069049.png" alt="IdentityMail Logo" width="120" height="120" />
   
-  <h1>📧 IdentityMail</h1>
+  <h1 style="border-bottom: none;">📧 IdentityMail</h1>
   
   <p>
-    <b>ASP.NET Core & Quixlab Teması ile Geliştirilmiş<br>Modern Kurumsal İçi Mesajlaşma Sistemi</b>
+    <b>ASP.NET Core & Quixlab Teması ile Güçlendirilmiş<br>Modern Kurumsal İçi Mesajlaşma ve Yönetim Sistemi</b>
   </p>
 
-  <a href="https://dotnet.microsoft.com/">
-    <img src="https://img.shields.io/badge/.NET%20Core-6.0%20%2F%208.0-512BD4?style=for-the-badge&logo=dotnet" alt=".NET Core">
-  </a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/Bootstrap-5-563D7C?style=for-the-badge&logo=bootstrap" alt="Bootstrap">
-  </a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/MSSQL-Server-CC2927?style=for-the-badge&logo=microsoft-sql-server" alt="MSSQL">
-  </a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/Entity%20Framework-Code%20First-blue?style=for-the-badge" alt="EF Core">
-  </a>
+  <p>
+    <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/mvc">
+      <img src="https://img.shields.io/badge/.NET%20Core-6.0%20%2F%208.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET Core">
+    </a>
+    <a href="https://getbootstrap.com/">
+      <img src="https://img.shields.io/badge/Bootstrap-5-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
+    </a>
+    <a href="https://www.microsoft.com/en-us/sql-server">
+      <img src="https://img.shields.io/badge/MSSQL-Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" alt="MSSQL">
+    </a>
+    <a href="https://learn.microsoft.com/en-us/ef/">
+      <img src="https://img.shields.io/badge/Entity%20Framework-Code%20First-blue?style=for-the-badge&logo=nuget&logoColor=white" alt="EF Core">
+    </a>
+  </p>
 
-  <br><br>
+  <p>
+    <img src="https://img.shields.io/github/last-commit/kullaniciadiniz/IdentityMail?style=flat-square&color=orange" alt="Last Commit">
+    <img src="https://img.shields.io/github/repo-size/kullaniciadiniz/IdentityMail?style=flat-square&color=green" alt="Repo Size">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License">
+  </p>
+
+  <br>
 </div>
 
 ---
@@ -88,7 +96,7 @@ Uygulamanın modern arayüzünden ve özelliklerinden kareler:
 
 ---
 
-## ✨ Geliştirilen Özellikler (12 Madde ve Fazlası)
+## ✨ Geliştirilen Özellikler
 
 Proje sürecinde aşağıdaki gereksinimler ve ekstra özellikler hayata geçirilmiştir:
 
@@ -105,7 +113,6 @@ Proje sürecinde aşağıdaki gereksinimler ve ekstra özellikler hayata geçiri
 
 ### 👤 Kullanıcı Deneyimi (UX)
 * **SweetAlert:** İşlem başarılı uyarıları standart `alert()` yerine modern popup'larla sağlanır.
-* **Profil Resmi:** Kullanıcılar profil fotoğrafı yükleyebilir. Bu fotoğraflar sunucuda (`wwwroot/userimages`) saklanır ve sistem genelinde dinamik gösterilir.
 * **Geri Dön Butonu:** Mesaj detayındayken kullanıcının geldiği listeye dönmesini sağlayan akıllı navigasyon.
 
 ---
@@ -117,7 +124,6 @@ Proje sürecinde aşağıdaki gereksinimler ve ekstra özellikler hayata geçiri
 * **ORM:** Entity Framework Core (Code First)
 * **Authentication:** ASP.NET Core Identity
 * **Frontend:** HTML5, CSS3 (Quixlab Theme), JavaScript (jQuery)
-* **Kütüphaneler:** SweetAlert2, FontAwesome
 
 ---
 
