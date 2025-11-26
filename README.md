@@ -1,5 +1,4 @@
 <div align="center">
-  
   <h1>📧 IdentityMail</h1>
   
   <p>
@@ -28,12 +27,9 @@
 
 ## 🚀 Proje Hakkında
 
-Merhaba! 👋 **IdentityMail**, ASP.NET Core altyapısı üzerine inşa ettiğim ve modern **Quixlab Admin Teması** ile giydirdiğim kapsamlı bir kurumsal içi mesajlaşma (mail) simülasyonudur.
+**IdentityMail**, ASP.NET Core altyapısı üzerine kurgulanmış, modern Quixlab admin teması ile giydirilmiş bir iç mesajlaşma (mail) simülasyonudur.
 
-Bu projeye başlarken aslında basit bir sohbet uygulaması yapmayı planlıyordum. Ancak geliştirme sürecinde *"Neden daha profesyonel bir yapı olmasın?"* diyerek projeyi; Gelen/Giden kutusu, Çöp kutusu mantığı (Soft Delete), Yıldızlama ve detaylı Profil yönetimi gibi özelliklerle donattım. Sonuç olarak ortaya tam fonksiyonlu, yaşayan bir e-posta yönetim sistemi çıktı.
-
-### 🎯 Neden Bu Projeyi Yaptım?
-Bu projeyi geliştirirken temel motivasyonum sadece kod yazmak değildi. Asıl hedefim; hazır ve karmaşık bir Admin Paneli temasının (Quixlab), **ASP.NET Core MVC** mimarisine parçalanarak (Partial Views, Layouts, Components) nasıl hatasız bir şekilde entegre edileceğini öğrenmekti. Aynı zamanda arka planda **Identity** kütüphanesi ile güvenli ve yönetilebilir bir üyelik sisteminin mimarisini deneyimlemek istedim.
+Proje, standart bir CRUD uygulamasının ötesine geçerek; **Soft Delete (Çöp Kutusu)**, **Favorilere Ekleme (Yıldızlama)**, **Akıllı Arama** ve **Profil Yönetimi** gibi gelişmiş özellikleri barındırır. Identity kütüphanesi ile güvenli bir kullanıcı altyapısı sunar.
 
 ---
 
@@ -84,6 +80,4 @@ Uygulamanın modern arayüzünden kareler:
 | *Silinen Mesaj Yönetimi* | |
 
 
-<div align="center">
-  <sub>IdentityMail © 2025</sub>
-</div>
+
