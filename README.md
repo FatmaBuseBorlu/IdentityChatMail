@@ -30,54 +30,97 @@
 
 **IdentityMail**, standart bir CRUD uygulamasının ötesine geçerek; kullanıcıların güvenli bir şekilde mesajlaşabildiği, **Identity** kütüphanesi ile korunan ve **Quixlab Admin Paneli** ile modernize edilmiş tam kapsamlı bir e-posta simülasyonudur.
 
-Proje sadece kod yazmak için değil; **UI/UX (Kullanıcı Deneyimi)**, **Soft Delete (Çöp Kutusu)** ve **Akıllı Arama** gibi gerçek dünya senaryolarını simüle etmek için tasarlanmıştır.
+Proje, hem frontend (UI/UX) hem de backend tarafında **gerçek dünya senaryoları** (Soft Delete, Profil Yönetimi, Dinamik Resim Yükleme vb.) dikkate alınarak geliştirilmiştir.
 
 ---
 
-## 📸 Ekran Görüntüleri
+## 📸 Proje Ekran Görüntüleri
 
-Uygulamanın modern arayüzünden kareler:
+Uygulamanın modern arayüzünden ve özelliklerinden kareler:
 
-| 🔐 Giriş Ekranı | 📩 Gelen Kutusu (Inbox) |
-| :---: | :---: |
-| <img src="GÖRSEL_LINKI_BURAYA_1" width="400"> | <img src="GÖRSEL_LINKI_BURAYA_2" width="400"> |
-| *Sadeleştirilmiş Login* | *İsimsiz, Konu Odaklı Liste* |
+### 1. Giriş ve Kayıt Ekranı
+*Quixlab temasının sadeleştirilmiş, `_Layout`'tan bağımsız tam ekran login/register arayüzü.*
 
-| 📝 Mesaj Oluştur | 👤 Profil Kartı |
-| :---: | :---: |
-| <img src="GÖRSEL_LINKI_BURAYA_3" width="400"> | <img src="GÖRSEL_LINKI_BURAYA_4" width="400"> |
-| *Odaklanmış Form Yapısı* | *Kişisel Bilgi Yönetimi* |
-
-| 📖 Mesaj Okuma | 🗑️ Çöp Kutusu |
-| :---: | :---: |
-| <img src="GÖRSEL_LINKI_BURAYA_5" width="400"> | <img src="GÖRSEL_LINKI_BURAYA_6" width="400"> |
-| *Tam Ekran Okuma & Aksiyonlar* | *Silinen Mesaj Yönetimi* |
+<br>
+[GÖRSEL BURAYA GELECEK - Login Ekranı]
+<br>
+<br>
 
 ---
 
-## ✨ Öne Çıkan Özellikler
+### 2. Gelen Kutusu (Inbox) & Gönderilmiş Postalar
+*Kullanıcı dostu liste yapısı. Karmaşık mail adresleri yerine sadece **Konu Başlığı** ve **Mesaj Özeti** gösterimi. Sağ tarafta tarih ve yıldızlama özelliği.*
 
-### 🎨 1. Modern UI & UX
-* **Quixlab Entegrasyonu:** Admin teması parçalanarak (Layout) MVC yapısına hatasız entegre edildi.
-* **Akıllı Navigasyon:** Mesaj detayındayken "Geri Dön" butonu ile geldiğiniz listeye (Gelen/Giden/Çöp) dönebilirsiniz.
-* **Temiz Liste:** Mesaj listelerinde karmaşık mail adresleri yerine sadece **Konu** ve **Mesaj Özeti** gösterilir.
-
-### ⚙️ 2. Teknik Özellikler
-* **Soft Delete (Çöp Kutusu):** Sil butonuna basıldığında veri silinmez, `IsTrash` flag'i ile Çöp Kutusuna taşınır.
-* **Yıldızlama (AJAX):** Sayfa yenilenmeden mesajlar favorilere eklenir.
-* **Akıllı Arama:** `Contains` ve `ToLower` algoritmalarıyla konu başlıklarında anlık arama yapılır.
-* **Reply (Cevapla):** Gelen mesaja cevap verirken `Re:` konusu ve alıcı otomatik doldurulur.
-
-### 🛡️ 3. Güvenlik
-* **ASP.NET Core Identity:** Güvenli giriş, kayıt ve çıkış işlemleri.
-* **Profil Yönetimi:** Kullanıcılar şifrelerini ve profil fotoğraflarını güncelleyebilir. Yüklenen resimler sunucuda (`wwwroot`) saklanır.
+<br>
+[GÖRSEL BURAYA GELECEK - Inbox Ekranı]
+<br>
+<br>
 
 ---
 
-## 👨‍💻 Geliştirici Notu
+### 3. Mesaj Okuma ve Detay
+*Tam ekran okuma modu. Gönderen kişinin baş harfiyle oluşturulmuş dinamik avatar, tarih bilgisi ve sağ üstte akıllı aksiyon butonları (Geri Dön, Sil).*
 
-> Bu proje, bir Admin Temasının MVC mimarisine **"Best Practice"** (En İyi Uygulama) yöntemleriyle nasıl giydirileceğini ve kullanıcı deneyiminin (UX) backend kodlarıyla nasıl destekleneceğini göstermek amacıyla geliştirilmiştir.
+<br>
+[GÖRSEL BURAYA GELECEK - Message Detail Ekranı]
+<br>
+<br>
+
+---
+
+### 4. Yeni Mesaj Oluşturma (Compose)
+*Sadeleştirilmiş form yapısı. Sol menü gizlenerek odaklanma sağlandı. Gönderim sonrası **SweetAlert** ile başarılı bildirimi.*
+
+<br>
+[GÖRSEL BURAYA GELECEK - Create Message Ekranı]
+<br>
+<br>
+
+---
+
+### 5. Profil Yönetimi ve Resim Yükleme
+*Kullanıcının bilgilerini güncelleyebildiği ve profil fotoğrafı yükleyebildiği kart yapısı. Yüklenen resim header ve mesajlarda dinamik görünür.*
+
+<br>
+[GÖRSEL BURAYA GELECEK - Profil Ekranı]
+<br>
+<br>
+
+---
+
+## ✨ Geliştirilen Özellikler (12 Madde ve Fazlası)
+
+Proje sürecinde aşağıdaki gereksinimler ve ekstra özellikler hayata geçirilmiştir:
+
+### 🎨 Tasarım ve Arayüz
+* **Quixlab Entegrasyonu:** Admin teması parçalanarak (Layout, Partial Views) MVC yapısına hatasız entegre edildi.
+* **Sadeleştirilmiş Menü:** Gereksiz tüm linkler kaldırıldı. Sol menüde sadece *Mesaj Oluştur, Gelen, Giden, Çöp Kutusu* bırakıldı.
+* **Temiz Liste Görünümü:** Mesaj listelerinde gönderen maili yerine, daha okunabilir olması için **Konu** ve **İçerik Özeti** ön plana çıkarıldı.
+
+### ⚙️ Backend ve Fonksiyonlar
+* **Soft Delete (Çöp Kutusu):** Silinen mesajlar veritabanından uçmaz (`IsTrash` flag), önce Çöp Kutusuna taşınır. İstenirse oradan kurtarılabilir.
+* **Yıldızlama (Favorites):** Önemli mesajlar tek tıkla (AJAX ile sayfa yenilenmeden) favorilere eklenir.
+* **Akıllı Arama:** Mesaj başlıklarında `Contains` metodu ile büyük/küçük harf duyarlılığı olmadan anlık arama yapılır.
+* **Reply (Cevapla) Mekanizması:** Gelen mesaja cevap verilirken "Alıcı" ve "Konu" (Başına `Re:` eklenerek) otomatik doldurulur.
+
+### 👤 Kullanıcı Deneyimi (UX)
+* **SweetAlert:** İşlem başarılı uyarıları standart `alert()` yerine modern popup'larla sağlanır.
+* **Profil Resmi:** Kullanıcılar profil fotoğrafı yükleyebilir. Bu fotoğraflar sunucuda (`wwwroot/userimages`) saklanır ve sistem genelinde dinamik gösterilir.
+* **Geri Dön Butonu:** Mesaj detayındayken kullanıcının geldiği listeye dönmesini sağlayan akıllı navigasyon.
+
+---
+
+## 🛠️ Kullanılan Teknolojiler
+
+* **Backend:** ASP.NET Core MVC (.NET 6.0 / 8.0)
+* **Veritabanı:** MSSQL Server
+* **ORM:** Entity Framework Core (Code First)
+* **Authentication:** ASP.NET Core Identity
+* **Frontend:** HTML5, CSS3 (Quixlab Theme), JavaScript (jQuery)
+* **Kütüphaneler:** SweetAlert2, FontAwesome
+
+---
 
 <div align="center">
-  <sub>IdentityMail © 2025 - Geliştirici: Adınız Soyadınız</sub>
+  <sub>IdentityMail © 2025 - Geliştirici: [Senin Adın]</sub>
 </div>
