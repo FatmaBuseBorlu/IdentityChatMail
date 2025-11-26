@@ -85,11 +85,6 @@ Uygulamanın modern arayüzünden kareler:
 | <img src="GÖRSEL_LINKI_BURAYA_5" width="400"> | |
 | *Silinen Mesaj Yönetimi* | |
 
----
-
-## 👨‍💻 Geliştirici Notu
-
-> Bu proje, bir Admin Temasının MVC mimarisine **"Best Practice"** (En İyi Uygulama) yöntemleriyle nasıl giydirileceğini ve kullanıcı deneyiminin (UX) backend kodlarıyla nasıl destekleneceğini göstermek amacıyla geliştirilmiştir. Kodları incelerken Controller tarafındaki LINQ sorgularına ve Layout yapısına dikkat edebilirsiniz.
 
 <div align="center">
   <sub>IdentityMail © 2025</sub>
