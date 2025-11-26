@@ -22,6 +22,7 @@ namespace IdentityChatMail.Controllers
             ViewBag.v1 = values.Name;
             ViewBag.v2 = values.Surname;
             ViewBag.v3 = values.Email;
+            ViewBag.v4 = values.ProfileImageUrl ?? "/quixlab-master/images/user/1.png";
             return View();
         }
 

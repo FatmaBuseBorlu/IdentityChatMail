@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using IdentityChatMail.Entities
+@inject UserManager<AppUser> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var profilResmi = user?.ProfileImageUrl ?? "/quixlab-master/images/user/1.png";
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -36,7 +44,14 @@
                     <b class="logo-abbr"><img src="~/quixlab-master/images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="~/quixlab-master/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
-                        <span style="color:white; font-weight:bold; font-size: 20px;">IDENTITY</span>
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                            <i class="fa fa-envelope-open" style="color: white; font-size: 24px; margin-right: 10px;"></i>
+
+                            <span style="color: white; font-weight: bold; font-size: 20px; text-transform: none;">
+                                IdentityMail
+                            </span>
+                        </div>
+
                     </span>
                 </a>
             </div>
@@ -61,7 +76,9 @@
                                 </span>
 
                                 <span class="activity active"></span>
-                                <img src="~/quixlab-master/images/user/1.png" height="40" width="40" alt="">
+
+                                <img src="@profilResmi" height="40" width="40" alt="" style="object-fit: cover; border-radius: 50%;">
+
                             </div>
 
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">

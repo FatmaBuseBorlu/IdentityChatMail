@@ -22,45 +22,49 @@
                 <div class="card-body">
 
                     <div class="email-right-box" style="margin-left: 0 !important; width: 100% !important;">
-                        <div class="toolbar" role="toolbar">
-                            <div class="btn-group m-b-20">
 
-                                <button type="button" class="btn btn-light" onclick="window.history.back();" data-toggle="tooltip" title="Geri Dön">
+                        <div class="d-flex justify-content-between align-items-center mb-4 pb-3" style="border-bottom: 1px solid #eee;">
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-light mr-2" onclick="window.history.back();" data-toggle="tooltip" title="Geri Dön">
                                     <i class="fa fa-arrow-left"></i>
                                 </button>
-                                <button type="button" class="btn btn-light" onclick="silmeOnayi(@Model.MessageId)" data-toggle="tooltip" title="Sil">
+                                <button type="button" class="btn btn-light text-danger" onclick="silmeOnayi(@Model.MessageId)" data-toggle="tooltip" title="Sil">
                                     <i class="fa fa-trash"></i>
                                 </button>
+                            </div>
 
+                            <div class="text-muted font-weight-bold">
+                                <i class="fa fa-clock-o mr-1"></i> @Model.SendDate.ToString("dd MMMM yyyy HH:mm")
                             </div>
                         </div>
 
-                        <div class="read-content">
+                        <div class="read-content mb-4">
 
-                            <div class="media pt-5">
-                                <img class="mr-3 rounded-circle" src="~/quixlab-master/images/avatar/1.jpg" width="50" height="50" alt="">
+                            <h3 class="mb-3" style="color: #7571f9;">@Model.Subject</h3>
+
+                            <div class="media align-items-center">
+                                <div class="mr-2 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; font-size: 16px; font-weight: bold;">
+                                    @Model.SenderEmail.Substring(0, 1).ToUpper()
+                                </div>
+
                                 <div class="media-body">
-                                    <h5 class="m-b-3">@Model.SenderEmail</h5>
-                                    <p class="m-b-2">@Model.SendDate.ToString("dd MMMM yyyy HH:mm")</p>
+                                    <h6 class="m-0 text-dark" style="font-size: 14px; font-weight: 600;">@Model.SenderEmail</h6>
+                                    <small class="text-muted" style="font-size: 12px;">Kime: @Model.ReceiverEmail</small>
                                 </div>
                             </div>
-                            <hr>
+                        </div>
 
-                            <div class="media mb-4 mt-1">
-                                <div class="media-body">
-                                    <h4 class="m-0 text-primary">Konu: @Model.Subject</h4>
-                                    <small class="text-muted">Kime: @Model.ReceiverEmail</small>
-                                </div>
-                            </div>
-
+                        <div class="read-content-body mt-4" style="font-size: 16px; line-height: 1.6; color: #555;">
                             <p>@Model.MessageDetail</p>
-
-                            <hr>
                         </div>
 
-                        <div class="text-right">
-                            <button class="btn btn-primary btn-sl-sm mb-5" type="button">Cevapla</button>
-                            <button class="btn btn-dark btn-sl-sm mb-5" type="button">İlet</button>
+                        <hr>
+
+                        <div class="text-right mt-4">
+                            <a href="/Message/CreateMessage?alici=@Model.SenderEmail&konu=@Model.Subject" class="btn btn-primary btn-sl-sm" style="background-color: #7571f9; border-color: #7571f9;">
+                                <i class="fa fa-reply mr-2"></i> Cevapla
+                            </a>
                         </div>
 
                     </div>
@@ -72,7 +76,6 @@
 
 @section Scripts {
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
     <script>
         function silmeOnayi(id) {
             swal({
@@ -84,7 +87,6 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    // Kullanıcı "Evet" derse silme linkine git
                     window.location.href = "/Message/DeleteMessage/" + id;
                 }
             });

@@ -2,6 +2,8 @@
 using IdentityChatMail.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdentityChatMail.Controllers
@@ -15,7 +17,6 @@ namespace IdentityChatMail.Controllers
             _context = context;
             _userManager = userManager;
         }
-
         public async Task<IActionResult> Profile()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -25,41 +26,67 @@ namespace IdentityChatMail.Controllers
         }
         public async Task<IActionResult> Inbox(string p)
         {
+            ViewBag.SearchTerm = p;
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            var messageList = _context.Messages.Where(x => x.ReceiverEmail == values.Email && x.IsTrash == false).ToList();
+            var messageList = _context.Messages
+                .Where(x => x.ReceiverEmail == values.Email && x.IsTrash == false)
+                .OrderByDescending(x => x.MessageId) 
+                .ToList();
             if (!string.IsNullOrEmpty(p))
             {
-                messageList = messageList.Where(y => y.Subject.Contains(p) || y.MessageDetail.Contains(p)).ToList();
+                p = p.ToLower();
+                messageList = messageList.Where(x => x.Subject != null && x.Subject.ToLower().Contains(p)).ToList();
             }
             return View(messageList);
         }
-
         public async Task<IActionResult> Sendbox(string p)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             string email = values.Email;
-            var sendMessageList = _context.Messages.Where(x => x.SenderEmail == email && x.IsTrash == false).ToList();
+
+            var sendMessageList = _context.Messages
+                .Where(x => x.SenderEmail == values.Email && x.IsTrash == false)
+                .OrderByDescending(x => x.MessageId)
+                .ToList();
 
             if (!string.IsNullOrEmpty(p))
             {
-                sendMessageList = sendMessageList.Where(y => y.Subject.Contains(p) || y.MessageDetail.Contains(p)).ToList();
+                p = p.ToLower();
+                sendMessageList = sendMessageList.Where(x => x.Subject != null && x.Subject.ToLower().Contains(p)).ToList();
             }
-
             return View(sendMessageList);
         }
-        public async Task<IActionResult> Trash()
+        public async Task<IActionResult> Trash(string p)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            string email = values.Email;
-            var trashList = _context.Messages.Where(x => (x.ReceiverEmail == email || x.SenderEmail == email) && x.IsTrash == true).ToList();
+            var trashList = _context.Messages
+                    .Where(x => (x.ReceiverEmail == values.Email || x.SenderEmail == values.Email) && x.IsTrash == true)
+                    .OrderByDescending(x => x.MessageId)
+                    .ToList();
+            if (!string.IsNullOrEmpty(p))
+            {
+                p = p.ToLower();
+                trashList = trashList.Where(x => x.Subject != null && x.Subject.ToLower().Contains(p)).ToList();
+            }
 
             return View(trashList);
         }
-        public IActionResult CreateMessage()
+        public IActionResult CreateMessage(string? alici, string? konu)
         {
-            return View();
-        }
+            Message model = new Message();
 
+            if (!string.IsNullOrEmpty(alici))
+            {
+                model.ReceiverEmail = alici; 
+            }
+
+            if (!string.IsNullOrEmpty(konu))
+            {
+                model.Subject = "Re: " + konu; 
+            }
+
+            return View(model); 
+        }
         [HttpPost]
         public async Task<IActionResult> CreateMessage(Message message)
         {
@@ -74,19 +101,19 @@ namespace IdentityChatMail.Controllers
             _context.SaveChanges();
             TempData["Durum"] = "ok";
             return RedirectToAction("Sendbox");
- 
         }
         public IActionResult MessageDetail(int id)
         {
             var value = _context.Messages.Find(id);
+            if (value == null) return RedirectToAction("Inbox");
             return View(value);
         }
-     public IActionResult DeleteMessage(int id)
+        public IActionResult DeleteMessage(int id)
         {
             var message = _context.Messages.Find(id);
             if (message != null)
             {
-                message.IsTrash = true; 
+                message.IsTrash = true;
                 _context.SaveChanges();
             }
             return RedirectToAction("Inbox");
@@ -94,16 +121,16 @@ namespace IdentityChatMail.Controllers
         public async Task<IActionResult> Important(string p)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            string email = values.Email;
-            var list = _context.Messages
-                .Where(x => (x.ReceiverEmail == email || x.SenderEmail == email) && x.IsTrash == false && x.IsImportant == true)
-                .ToList();
-
+            var importantList = _context.Messages
+          .Where(x => (x.ReceiverEmail == values.Email || x.SenderEmail == values.Email) && x.IsTrash == false && x.IsImportant == true)
+          .OrderByDescending(x => x.MessageId)
+          .ToList();
             if (!string.IsNullOrEmpty(p))
             {
-                list = list.Where(y => y.Subject.Contains(p) || y.MessageDetail.Contains(p)).ToList();
+                p = p.ToLower();
+                importantList = importantList.Where(x => x.Subject != null && x.Subject.ToLower().Contains(p)).ToList();
             }
-            return View(list);
+            return View(importantList);
         }
         public IActionResult MakeImportant(int id)
         {
@@ -113,7 +140,7 @@ namespace IdentityChatMail.Controllers
                 message.IsImportant = !message.IsImportant;
                 _context.SaveChanges();
             }
-            return Ok(); 
+            return Ok();
         }
     }
 }
