@@ -1,10 +1,7 @@
 <div align="center">
-  <h1>📧 IdentityMail</h1>
-  
-  <p>
-    <b>ASP.NET Core & Quixlab Teması ile Geliştirilmiş<br>Modern Kurumsal İçi Mesajlaşma Sistemi</b>
-  </p>
-
+<h1 style="border-bottom: none;">
+    📧 IdentityChatMail
+  </h1>
   <p>
     <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/mvc">
       <img src="https://img.shields.io/badge/.NET%20Core-6.0%20%2F%208.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET Core">
