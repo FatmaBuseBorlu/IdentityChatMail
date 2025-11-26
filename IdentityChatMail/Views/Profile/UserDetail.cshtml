@@ -1,9 +1,87 @@
 ﻿@{
-    ViewData["Title"] = "UserDetail";
-    Layout = "~/Views/Shared/_MessageLayout.cshtml";
+    ViewData["Title"] = "Profilim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Giriş Yapan Kullanıcı Bilgileri</h1>
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Hesap</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Profilim</a></li>
+        </ol>
+    </div>
+</div>
 
-<h3>Hoşgeldiniz: @ViewBag.v1 @ViewBag.v2</h3>
-<h4>E-Mail Adresi: @ViewBag.v3</h4>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-lg-4 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="media align-items-center mb-4">
+                        <img class="mr-3" src="~/quixlab-master/images/avatar/1.jpg" width="80" height="80" alt="" style="border-radius: 50%;">
+                        <div class="media-body">
+                            <h3 class="mb-0">@ViewBag.v1 @ViewBag.v2</h3>
+                            <p class="text-muted mb-0">Kullanıcı</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="col">
+                            <div class="card-profile__info">
+                                <strong class="text-muted d-block">Email</strong>
+                                <span>@ViewBag.v3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 col-xl-9">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="toolbar mb-4" role="toolbar" style="background-color: #7571f9; padding: 10px 15px; border-radius: 5px;">
+                        <h4 class="mb-0" style="color: white; font-weight: 500;">
+                            <i class="fa fa-user-cog mr-2"></i> Profil Bilgilerini Güncelle
+                        </h4>
+                    </div>
+
+                    <form method="post" class="form-profile">
+
+                        <div class="form-group">
+                            <label>Adınız</label>
+                            <input type="text" class="form-control" name="Name" value="@ViewBag.v1" placeholder="Adınız">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Soyadınız</label>
+                            <input type="text" class="form-control" name="Surname" value="@ViewBag.v2" placeholder="Soyadınız">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Adresi (Değiştirilemez)</label>
+                            <input type="email" class="form-control" name="Email" value="@ViewBag.v3" readonly style="background-color: #f0f0f0;">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Yeni Şifre</label>
+                            <input type="password" class="form-control" name="Password" placeholder="Yeni Şifre">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Şifre Tekrar</label>
+                            <input type="password" class="form-control" name="ConfirmPassword" placeholder="Yeni Şifre Tekrar">
+                        </div>
+
+                        <button class="btn btn-primary px-3" type="submit" style="background-color: #7571f9; border-color: #7571f9;">
+                            <i class="fa fa-save mr-2"></i> Güncelle
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

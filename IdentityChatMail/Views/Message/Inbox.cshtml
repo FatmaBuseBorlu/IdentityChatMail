@@ -1,29 +1,122 @@
-﻿@model List<IdentityChatMail.Entities.Message>
+﻿@using IdentityChatMail.Entities
+@model List<Message>
 
 @{
-    ViewData["Title"] = "Inbox";
-    Layout = "~/Views/Shared/_MessageLayout.cshtml";
-    int count = 0;
+    ViewData["Title"] = "Gelen Kutusu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Gönderilen Mesajlar</h2>
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Uygulamalar</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Gelen Kutusu</a></li>
+        </ol>
+    </div>
+</div>
 
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Gönderici Email</th>
-        <th>Konu</th>
-        <th>Mesajı Aç</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        count++;
-        <tr>
-            <td>@count</td>
-            <td>@item.SenderEmail</td>
-            <td>@item.Subject</td>
-            <td><a href="/Message/MessageDetail/@item.MessageId" class="btn btn-warning">Mesajı Aç</a></td>
-        </tr>
-    }
-</table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
 
+                    <div class="email-right-box" style="margin-left: 0 !important; width: 100% !important;">
+
+                        <div role="toolbar" class="toolbar mb-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form action="/Message/Inbox" method="get">
+                                        <div class="input-group">
+                                            <input type="text" name="p" class="form-control" placeholder="Email veya konuda ara...">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-dark" type="submit"><i class="fa fa-search"></i> Ara</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="email-list m-t-15">
+                            @if (Model.Count == 0)
+                            {
+                                <div class="alert alert-warning mt-3">
+                                    <i class="fa fa-info-circle"></i> Gelen kutunuzda hiç mesaj yok.
+                                </div>
+                            }
+                            else
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <div class="message">
+                                        <a href="/Message/MessageDetail/@item.MessageId">
+
+                                            <div class="col-mail col-mail-1">
+                                                <div class="email-checkbox">
+                                                    <input type="checkbox" id="chk-@item.MessageId">
+                                                    <label class="toggle" for="chk-@item.MessageId"></label>
+                                                </div>
+
+                                                <span class="star-toggle ti-star @(item.IsImportant ? "text-warning" : "")" onclick="yildizla(@item.MessageId)"></span>
+                                            </div>
+
+                                            <div class="col-mail col-mail-2">
+                                                <div class="subject">
+                                                    <span style="font-weight: 700; color: #464a53;">
+                                                        @item.Subject
+                                                    </span>
+
+                                                    <span style="color: #888;">
+                                                        -
+                                                        @if (!string.IsNullOrEmpty(item.MessageDetail) && item.MessageDetail.Length > 40)
+                                                        {
+                                                            <span>@item.MessageDetail.Substring(0, 40)...</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>@item.MessageDetail</span>
+                                                        }
+                                                    </span>
+                                                </div>
+
+                                                <div class="date">
+                                                    @item.SendDate.ToString("HH:mm")
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Yıldızlama işlemini arka planda yapan fonksiyon
+        function yildizla(id) {
+            $.get("/Message/MakeImportant/" + id);
+        }
+
+        $(document).ready(function() {
+
+            // Yıldız animasyonu (Tıklayınca anlık renk değişimi)
+            $(".star-toggle").click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $(this).toggleClass("text-warning");
+            });
+
+            // Checkbox tıklamasını engelleme
+            $(".email-checkbox input").click(function(e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
+}

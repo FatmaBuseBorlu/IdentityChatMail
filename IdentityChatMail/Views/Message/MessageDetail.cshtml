@@ -1,0 +1,93 @@
+﻿@using IdentityChatMail.Entities
+@model Message
+
+@{
+    ViewData["Title"] = "Mesaj Detayı";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Mesajlar</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Mesaj Oku</a></li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="email-right-box" style="margin-left: 0 !important; width: 100% !important;">
+                        <div class="toolbar" role="toolbar">
+                            <div class="btn-group m-b-20">
+
+                                <button type="button" class="btn btn-light" onclick="window.history.back();" data-toggle="tooltip" title="Geri Dön">
+                                    <i class="fa fa-arrow-left"></i>
+                                </button>
+                                <button type="button" class="btn btn-light" onclick="silmeOnayi(@Model.MessageId)" data-toggle="tooltip" title="Sil">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="read-content">
+
+                            <div class="media pt-5">
+                                <img class="mr-3 rounded-circle" src="~/quixlab-master/images/avatar/1.jpg" width="50" height="50" alt="">
+                                <div class="media-body">
+                                    <h5 class="m-b-3">@Model.SenderEmail</h5>
+                                    <p class="m-b-2">@Model.SendDate.ToString("dd MMMM yyyy HH:mm")</p>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="media mb-4 mt-1">
+                                <div class="media-body">
+                                    <h4 class="m-0 text-primary">Konu: @Model.Subject</h4>
+                                    <small class="text-muted">Kime: @Model.ReceiverEmail</small>
+                                </div>
+                            </div>
+
+                            <p>@Model.MessageDetail</p>
+
+                            <hr>
+                        </div>
+
+                        <div class="text-right">
+                            <button class="btn btn-primary btn-sl-sm mb-5" type="button">Cevapla</button>
+                            <button class="btn btn-dark btn-sl-sm mb-5" type="button">İlet</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        function silmeOnayi(id) {
+            swal({
+                title: "Emin misiniz?",
+                text: "Bu mesajı çöp kutusuna taşımak üzeresiniz!",
+                icon: "warning",
+                buttons: ["Vazgeç", "Evet, Sil!"],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    // Kullanıcı "Evet" derse silme linkine git
+                    window.location.href = "/Message/DeleteMessage/" + id;
+                }
+            });
+        }
+    </script>
+}

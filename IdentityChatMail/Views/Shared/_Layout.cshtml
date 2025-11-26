@@ -1,49 +1,152 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - IdentityChatMailDay</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/IdentityChatMailDay.styles.css" asp-append-version="true" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>IdentityChat - Panel</title>
+
+    <link href="~/quixlab-master/css/style.css" rel="stylesheet">
+
+    <link href="~/quixlab-master/plugins/sweetalert/css/sweetalert.css" rel="stylesheet">
+
+    <style>
+        .brand-logo {
+            background-color: #7571f9;
+        }
+    </style>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IdentityChatMailDay</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+
+    <div id="main-wrapper">
+
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="/Message/Inbox">
+                    <b class="logo-abbr"><img src="~/quixlab-master/images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="~/quixlab-master/images/logo-compact.png" alt=""></span>
+                    <span class="brand-title">
+                        <span style="color:white; font-weight:bold; font-size: 20px;">IDENTITY</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <div class="header">
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+
+                                <span class="mr-2" style="color: #464a53; font-weight: 600; font-size: 14px; text-transform: capitalize;">
+                                    @User.Identity.Name
+                                </span>
+
+                                <span class="activity active"></span>
+                                <img src="~/quixlab-master/images/user/1.png" height="40" width="40" alt="">
+                            </div>
+
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="/Profile/UserDetail">
+                                                <i class="icon-user"></i> <span>Profilim</span>
+                                            </a>
+                                        </li>
+
+                                        <hr class="my-2">
+
+                                        <li>
+                                            <a href="/Login/LogOut">
+                                                <i class="icon-key"></i> <span>Çıkış Yap</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
+
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li>
+                        <a href="/Message/CreateMessage" aria-expanded="false" style="background-color: #7571f9 !important; color: white !important; border-radius: 5px; margin: 10px 15px;">
+                            <i class="icon-note menu-icon" style="color: white !important;"></i>
+                            <span class="nav-text" style="font-weight: bold;">Mesaj Oluştur</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Message/Inbox" aria-expanded="false">
+                            <i class="icon-envelope menu-icon"></i><span class="nav-text">Gelen Kutusu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Message/Important" aria-expanded="false">
+                            <i class="icon-star menu-icon"></i><span class="nav-text">Yıldızlı Mesajlar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Message/Sendbox" aria-expanded="false">
+                            <i class="icon-paper-plane menu-icon"></i><span class="nav-text">Gönderilmiş Postalar</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Message/Trash" aria-expanded="false">
+                            <i class="icon-trash menu-icon"></i><span class="nav-text">Çöp Kutusu</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; @DateTime.Now.Year IdentityChat</p>
+            </div>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - IdentityChatMailDay - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/quixlab-master/plugins/common/common.min.js"></script>
+    <script src="~/quixlab-master/js/custom.min.js"></script>
+    <script src="~/quixlab-master/js/settings.js"></script>
+    <script src="~/quixlab-master/js/gleek.js"></script>
+    <script src="~/quixlab-master/js/styleSwitcher.js"></script>
+
+    <script src="~/quixlab-master/plugins/sweetalert/js/sweetalert.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -9,5 +9,7 @@
         public string MessageDetail { get; set; }
         public DateTime SendDate { get; set; }
         public bool IsRead { get; set; }
+        public bool IsTrash { get; set; }
+        public bool IsImportant { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 @model List<Message>
 
 @{
-    ViewData["Title"] = "Gönderilmiş Postalar";
+    ViewData["Title"] = "Çöp Kutusu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,7 +10,7 @@
     <div class="col p-md-0">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Uygulamalar</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Gönderilmiş Postalar</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Çöp Kutusu</a></li>
         </ol>
     </div>
 </div>
@@ -26,9 +26,9 @@
                         <div role="toolbar" class="toolbar mb-4">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form action="/Message/Sendbox" method="get">
+                                    <form action="/Message/Trash" method="get">
                                         <div class="input-group">
-                                            <input type="text" name="p" class="form-control" placeholder="Alıcı veya konuda ara...">
+                                            <input type="text" name="p" class="form-control" placeholder="Çöp kutusunda ara...">
                                             <div class="input-group-append">
                                                 <button class="btn btn-dark" type="submit"><i class="fa fa-search"></i> Ara</button>
                                             </div>
@@ -41,8 +41,8 @@
                         <div class="email-list m-t-15">
                             @if (Model.Count == 0)
                             {
-                                <div class="alert alert-info mt-3">
-                                    <i class="fa fa-paper-plane"></i> Henüz mesaj göndermediniz.
+                                <div class="alert alert-success mt-3">
+                                    <i class="fa fa-check"></i> Çöp kutunuz boş.
                                 </div>
                             }
                             else
@@ -57,21 +57,17 @@
                                                     <input type="checkbox" id="chk-@item.MessageId">
                                                     <label class="toggle" for="chk-@item.MessageId"></label>
                                                 </div>
-
-                                                <span class="star-toggle ti-star @(item.IsImportant ? "text-warning" : "")" onclick="yildizla(@item.MessageId)"></span>
+                                                <span class="star-toggle ti-star"></span>
                                             </div>
 
                                             <div class="col-mail col-mail-2">
                                                 <div class="subject">
-
-                                                    <span style="font-weight: 700; color: #464a53; text-transform: capitalize;">
-                                                        Alıcı: @item.ReceiverEmail.Split('@')[0]
+                                                    <span style="font-weight: 700; color: #464a53; text-decoration: line-through;">
+                                                        @item.Subject
                                                     </span>
 
                                                     <span style="color: #888;">
                                                         -
-                                                        <strong style="color: #555;">@item.Subject:</strong>
-
                                                         @if (!string.IsNullOrEmpty(item.MessageDetail) && item.MessageDetail.Length > 40)
                                                         {
                                                             <span>@item.MessageDetail.Substring(0, 40)...</span>
@@ -82,17 +78,13 @@
                                                         }
                                                     </span>
                                                 </div>
-
-                                                <div class="date">
-                                                    @item.SendDate.ToString("HH:mm")
-                                                </div>
+                                                <div class="date">@item.SendDate.ToString("HH:mm")</div>
                                             </div>
                                         </a>
                                     </div>
                                 }
                             }
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -102,29 +94,9 @@
 
 @section Scripts {
     <script>
-        // Yıldızlama Fonksiyonu
-        function yildizla(id) {
-            $.get("/Message/MakeImportant/" + id);
-        }
-
         $(document).ready(function() {
-            // SweetAlert (Mesaj gönderilince çıkan uyarı)
-            var durum = '@TempData["Durum"]';
-            if (durum == "ok") {
-                swal("Başarılı!", "Mesajınız başarıyla gönderildi.", "success");
-            }
-
-            // Yıldız Animasyonu
-            $(".star-toggle").click(function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                $(this).toggleClass("text-warning");
-            });
-
-            // Checkbox Tıklama
-            $(".email-checkbox input").click(function(e) {
-                e.stopPropagation();
-            });
+            $(".star-toggle").click(function (e) { e.preventDefault(); e.stopPropagation(); $(this).toggleClass("text-warning"); });
+            $(".email-checkbox input").click(function(e) { e.stopPropagation(); });
         });
     </script>
 }

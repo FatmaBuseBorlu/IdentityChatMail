@@ -15,7 +15,7 @@ namespace IdentityChatMail.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Inbox", "Message");
         }
 
         public IActionResult Privacy()
