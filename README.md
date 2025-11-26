@@ -1,4 +1,4 @@
-<h1 style="border-bottom: none;">📧 IdentityMail – Modern Kurumsal İçi Mesajlaşma Sistemi</h1>
+<h1 style="border-bottom: none;">📧 IdentityChatMail</h1>
 
 ---
 
