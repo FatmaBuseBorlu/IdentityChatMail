@@ -1,50 +1,106 @@
-📧 IdentityMail - Kurumsal İçi Mesajlaşma Sistemi
-IdentityMail, ASP.NET Core altyapısı üzerine kurgulanmış, modern Quixlab admin teması ile giydirilmiş bir iç mesajlaşma (mail) simülasyonudur.
+<div align="center">
 
-Proje, standart bir CRUD uygulamasının ötesine geçerek; Soft Delete (Çöp Kutusu), Favorilere Ekleme (Yıldızlama), Akıllı Arama ve Profil Yönetimi gibi gelişmiş özellikleri barındırır. Identity kütüphanesi ile güvenli bir kullanıcı altyapısı sunar.
+  <img src="https://cdn-icons-png.flaticon.com/512/9069/9069049.png" alt="logo" width="100" height="100" />
+  
+  <h1>📧 IdentityMail</h1>
+  
+  <p>
+    <b>ASP.NET Core & Quixlab Teması ile Geliştirilmiş<br>Modern Kurumsal İçi Mesajlaşma Sistemi</b>
+  </p>
 
-📸 Proje Ekran Görüntüleri
-Uygulamanın arayüzünden ve temel özelliklerinden kareler:
+  <a href="https://dotnet.microsoft.com/">
+    <img src="https://img.shields.io/badge/.NET%20Core-6.0%20%2F%208.0-512BD4?style=for-the-badge&logo=dotnet" alt=".NET Core">
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/Bootstrap-5-563D7C?style=for-the-badge&logo=bootstrap" alt="Bootstrap">
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/MSSQL-Server-CC2927?style=for-the-badge&logo=microsoft-sql-server" alt="MSSQL">
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/Entity%20Framework-Code%20First-blue?style=for-the-badge" alt="EF Core">
+  </a>
 
-1. Giriş ve Kayıt Ekranı
-Quixlab temasının sadeleştirilmiş login/register arayüzü.
+  <br><br>
+</div>
 
-2. Gelen Kutusu (Inbox)
-Kullanıcı dostu liste yapısı. Gönderen ismi yerine konu ve mesaj özeti gösterimi. Sağ tarafta tarih ve yıldızlama özelliği.
+---
 
-3. Mesaj Okuma ve Detay
-Tam ekran okuma modu. Gönderen profil ikonu, tarih ve sağ üstte akıllı aksiyon butonları (Geri Dön, Sil).
+## 🚀 Proje Hakkında
 
-4. Yeni Mesaj Oluşturma (Compose)
-Sadeleştirilmiş form yapısı. Sol menü gizlenerek odaklanma sağlandı.
+**IdentityMail**, standart bir CRUD uygulamasının ötesine geçerek; kullanıcıların güvenli bir şekilde mesajlaşabildiği, **Identity** kütüphanesi ile korunan ve **Quixlab Admin Paneli** ile modernize edilmiş tam kapsamlı bir e-posta simülasyonudur.
 
-5. Profil Yönetimi
-Kullanıcının bilgilerini güncelleyebildiği ve profil fotoğrafı yükleyebildiği kart yapısı.
+Proje sadece kod yazmak için değil; **UI/UX (Kullanıcı Deneyimi)**, **Soft Delete (Çöp Kutusu)** ve **Akıllı Arama** gibi gerçek dünya senaryolarını simüle etmek için tasarlanmıştır.
 
-✨ Öne Çıkan Özellikler
-Modern UI Entegrasyonu: Quixlab Admin Dashboard teması projeye başarıyla entegre edildi (Layout, Partial Views).
+---
 
-Akıllı Arama: Mesaj başlıklarında anlık arama yapılabilir (Case-insensitive).
+## 📸 Ekran Görüntüleri
 
-Soft Delete (Çöp Kutusu): Silinen mesajlar veritabanından tamamen uçmaz, önce Çöp Kutusuna taşınır (IsTrash).
+Uygulamanın modern arayüzünden kareler:
 
-Favoriler: Önemli mesajlar tek tıkla yıldızlanarak ayrı bir listede tutulur.
+| 🔐 Giriş Ekranı | 📩 Gelen Kutusu (Inbox) |
+| :---: | :---: |
+| <img src="GÖRSEL_LINKI_BURAYA_1" width="400"> | <img src="GÖRSEL_LINKI_BURAYA_2" width="400"> |
+| *Sadeleştirilmiş Login* | *İsimsiz, Konu Odaklı Liste* |
 
-UX İyileştirmeleri:
+| 📝 Mesaj Oluştur | 👤 Profil Kartı |
+| :---: | :---: |
+| <img src="GÖRSEL_LINKI_BURAYA_3" width="400"> | <img src="GÖRSEL_LINKI_BURAYA_4" width="400"> |
+| *Odaklanmış Form Yapısı* | *Kişisel Bilgi Yönetimi* |
 
-SweetAlert: İşlem başarılı uyarıları için modern popup'lar.
+| 📖 Mesaj Okuma | 🗑️ Çöp Kutusu |
+| :---: | :---: |
+| <img src="GÖRSEL_LINKI_BURAYA_5" width="400"> | <img src="GÖRSEL_LINKI_BURAYA_6" width="400"> |
+| *Tam Ekran Okuma & Aksiyonlar* | *Silinen Mesaj Yönetimi* |
 
-Reply (Cevapla): Gelen mesaja cevap verirken alıcı ve konu (Re:) otomatik dolar.
+---
 
-Profil Resmi: Yüklenen resimler sunucuda (wwwroot) saklanır ve sistem genelinde dinamik olarak gösterilir.
+## ✨ Öne Çıkan Özellikler
 
-🛠️ Teknolojiler
-Backend: ASP.NET Core MVC (.NET 6.0 / 8.0)
+### 🎨 1. Modern UI & UX
+* **Quixlab Entegrasyonu:** Admin teması parçalanarak (Layout) MVC yapısına hatasız entegre edildi.
+* **Akıllı Navigasyon:** Mesaj detayındayken "Geri Dön" butonu ile geldiğiniz listeye (Gelen/Giden/Çöp) dönebilirsiniz.
+* **Temiz Liste:** Mesaj listelerinde karmaşık mail adresleri yerine sadece **Konu** ve **Mesaj Özeti** gösterilir.
 
-Veritabanı: MSSQL Server, Entity Framework Core (Code First)
+### ⚙️ 2. Teknik Özellikler
+* **Soft Delete (Çöp Kutusu):** Sil butonuna basıldığında veri silinmez, `IsTrash` flag'i ile Çöp Kutusuna taşınır.
+* **Yıldızlama (AJAX):** Sayfa yenilenmeden mesajlar favorilere eklenir.
+* **Akıllı Arama:** `Contains` ve `ToLower` algoritmalarıyla konu başlıklarında anlık arama yapılır.
+* **Reply (Cevapla):** Gelen mesaja cevap verirken `Re:` konusu ve alıcı otomatik doldurulur.
 
-Authentication: ASP.NET Core Identity
+### 🛡️ 3. Güvenlik
+* **ASP.NET Core Identity:** Güvenli giriş, kayıt ve çıkış işlemleri.
+* **Profil Yönetimi:** Kullanıcılar şifrelerini ve profil fotoğraflarını güncelleyebilir. Yüklenen resimler sunucuda (`wwwroot`) saklanır.
 
-Frontend: HTML5, CSS3, JavaScript (jQuery)
+---
 
-Kütüphaneler: SweetAlert2, FontAwesome
+## 🛠️ Kurulum ve Çalıştırma
+
+Bu projeyi yerel makinenizde çalıştırmak için adımları takip edin:
+
+1.  **Repoyu Klonlayın**
+    ```bash
+    git clone [https://github.com/kullaniciadiniz/IdentityMail.git](https://github.com/kullaniciadiniz/IdentityMail.git)
+    ```
+
+2.  **Veritabanı Bağlantısı**
+    `appsettings.json` dosyasındaki bağlantı dizesini kendi SQL Server'ınıza göre düzenleyin.
+
+3.  **Migration İşlemi**
+    Package Manager Console'u açın ve veritabanını oluşturun:
+    ```powershell
+    update-database
+    ```
+
+4.  **Çalıştırın**
+    Projeyi başlatın ve `https://localhost:xxxx` adresine gidin.
+
+---
+
+## 👨‍💻 Geliştirici Notu
+
+> Bu proje, bir Admin Temasının MVC mimarisine **"Best Practice"** (En İyi Uygulama) yöntemleriyle nasıl giydirileceğini ve kullanıcı deneyiminin (UX) backend kodlarıyla nasıl destekleneceğini göstermek amacıyla geliştirilmiştir.
+
+<div align="center">
+  <sub>IdentityMail © 2025 - Geliştirici: Adınız Soyadınız</sub>
+</div>
