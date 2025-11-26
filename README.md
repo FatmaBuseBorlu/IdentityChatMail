@@ -2,10 +2,10 @@
 
   <img src="https://cdn-icons-png.flaticon.com/512/9069/9069049.png" alt="IdentityMail Logo" width="120" height="120" />
   
-  <h1 style="border-bottom: none;">📧 IdentityMail</h1>
+  <h1>📧 IdentityMail</h1>
   
   <p>
-    <b>ASP.NET Core & Quixlab Teması ile Güçlendirilmiş<br>Modern Kurumsal İçi Mesajlaşma Sistemi</b>
+    <b>ASP.NET Core & Quixlab Teması ile Geliştirilmiş<br>Modern Kurumsal İçi Mesajlaşma Sistemi</b>
   </p>
 
   <p>
@@ -30,13 +30,43 @@
 
 ## 🚀 Proje Hakkında
 
-**IdentityMail**, standart bir CRUD uygulamasının ötesine geçerek; kullanıcıların güvenli bir şekilde mesajlaşabildiği, **Identity** kütüphanesi ile korunan ve **Quixlab Admin Paneli** ile modernize edilmiş tam kapsamlı bir e-posta simülasyonudur.
+Merhaba! 👋 **IdentityMail**, ASP.NET Core altyapısı üzerine inşa ettiğim ve modern **Quixlab Admin Teması** ile giydirdiğim kapsamlı bir kurumsal içi mesajlaşma (mail) simülasyonudur.
 
-Proje sadece kod yazmak için değil; **UI/UX (Kullanıcı Deneyimi)**, **Soft Delete (Çöp Kutusu)** ve **Akıllı Arama** gibi gerçek dünya senaryolarını simüle etmek için tasarlanmıştır.
+Bu projeye başlarken aslında basit bir sohbet uygulaması yapmayı planlıyordum. Ancak geliştirme sürecinde *"Neden daha profesyonel bir yapı olmasın?"* diyerek projeyi; Gelen/Giden kutusu, Çöp kutusu mantığı (Soft Delete), Yıldızlama ve detaylı Profil yönetimi gibi özelliklerle donattım. Sonuç olarak ortaya tam fonksiyonlu, yaşayan bir e-posta yönetim sistemi çıktı.
+
+### 🎯 Neden Bu Projeyi Yaptım?
+Bu projeyi geliştirirken temel motivasyonum sadece kod yazmak değildi. Asıl hedefim; hazır ve karmaşık bir Admin Paneli temasının (Quixlab), **ASP.NET Core MVC** mimarisine parçalanarak (Partial Views, Layouts, Components) nasıl hatasız bir şekilde entegre edileceğini öğrenmekti. Aynı zamanda arka planda **Identity** kütüphanesi ile güvenli ve yönetilebilir bir üyelik sisteminin mimarisini deneyimlemek istedim.
 
 ---
 
-## 📸 Ekran Görüntüleri
+## 🔥 Temel Özellikler
+
+* **Modern UI/UX:** Quixlab teması projenin ihtiyaçlarına göre özel olarak revize edildi. Gereksiz menüler atıldı, kullanıcıyı yormayan sade ve odaklı bir yapı kuruldu.
+* **Mesajlaşma Sistemi:**
+    * **Gelen & Giden Kutusu:** Kullanıcılar sistemdeki diğer kullanıcılara mail gönderebilir ve gelenleri okuyabilir.
+    * **Akıllı Cevapla (Reply):** Gelen mesaja "Cevapla" denildiğinde, alıcı adresi ve konu başlığı (Re: formatında) otomatik olarak doldurulur.
+    * **Anlık Arama:** Konu başlıklarında büyük/küçük harf duyarlılığı olmadan anlık arama yapılabilir.
+* **Soft Delete (Çöp Kutusu):** Silinen mesajlar veritabanından hemen uçmaz! Gerçek bir mail deneyimi için önce "Çöp Kutusu"na taşınır (`IsTrash`), istenirse oradan kalıcı olarak silinebilir.
+* **Favoriler (Yıldızlama):** Önemli mesajlar tek tıkla (AJAX ile sayfa yenilenmeden) yıldızlanarak ayrı bir sekmede filtrelenebilir.
+* **Profil Yönetimi:**
+    * Kullanıcılar Ad, Soyad ve Şifre bilgilerini güncelleyebilir.
+    * **Profil Resmi:** Kullanıcılar kendi profil fotoğraflarını yükleyebilir. Yüklenen fotoğraflar sunucuda (`wwwroot`) saklanır ve sistem genelinde dinamik olarak görünür.
+* **Bildirimler:** Mesaj gönderimi veya silme işlemlerinde standart, sıkıcı tarayıcı uyarıları yerine modern **SweetAlert** popup'ları kullanıldı.
+
+---
+
+## 🛠️ Teknik Detaylar
+
+* **Framework:** .NET 6.0 / .NET 8.0 (Core MVC)
+* **Veritabanı:** MSSQL Server
+* **ORM:** Entity Framework Core (Code First Yaklaşımı)
+* **Authentication:** ASP.NET Core Identity
+* **Frontend:** HTML5, CSS3, Bootstrap, jQuery
+* **Kütüphaneler:** SweetAlert2, FontAwesome
+
+---
+
+## 📸 Proje Ekran Görüntüleri
 
 Uygulamanın modern arayüzünden kareler:
 
@@ -57,27 +87,9 @@ Uygulamanın modern arayüzünden kareler:
 
 ---
 
-## ✨ Öne Çıkan Özellikler
-
-### 🎨 1. Modern UI & UX
-* **Quixlab Entegrasyonu:** Admin teması parçalanarak (Layout) MVC yapısına hatasız entegre edildi.
-* **Akıllı Navigasyon:** Mesaj detayındayken "Geri Dön" butonu ile geldiğiniz listeye (Gelen/Giden/Çöp) dönebilirsiniz.
-* **Temiz Liste:** Mesaj listelerinde karmaşık mail adresleri yerine sadece **Konu** ve **Mesaj Özeti** gösterilir.
-
-### ⚙️ 2. Teknik Özellikler
-* **Soft Delete (Çöp Kutusu):** Sil butonuna basıldığında veri silinmez, `IsTrash` flag'i ile Çöp Kutusuna taşınır.
-* **Yıldızlama (AJAX):** Sayfa yenilenmeden mesajlar favorilere eklenir.
-* **Akıllı Arama:** `Contains` ve `ToLower` algoritmalarıyla konu başlıklarında anlık arama yapılır.
-* **Reply (Cevapla):** Gelen mesaja cevap verirken `Re:` konusu ve alıcı otomatik doldurulur.
-
-### 🛡️ 3. Güvenlik
-* **ASP.NET Core Identity:** Güvenli giriş, kayıt ve çıkış işlemleri.
-
----
-
 ## 👨‍💻 Geliştirici Notu
 
-> Bu proje, bir Admin Temasının MVC mimarisine **"Best Practice"** (En İyi Uygulama) yöntemleriyle nasıl giydirileceğini ve kullanıcı deneyiminin (UX) backend kodlarıyla nasıl destekleneceğini göstermek amacıyla geliştirilmiştir.
+> Bu proje, bir Admin Temasının MVC mimarisine **"Best Practice"** (En İyi Uygulama) yöntemleriyle nasıl giydirileceğini ve kullanıcı deneyiminin (UX) backend kodlarıyla nasıl destekleneceğini göstermek amacıyla geliştirilmiştir. Kodları incelerken Controller tarafındaki LINQ sorgularına ve Layout yapısına dikkat edebilirsiniz.
 
 <div align="center">
   <sub>IdentityMail © 2025</sub>
