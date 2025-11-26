@@ -1,11 +1,10 @@
 <div align="center">
-<h1 style="border-bottom: none;">
+  <br>
+
+  <h1 style="border-bottom: none;">
     📧 IdentityChatMail
   </h1>
   <br>
-</div>
-
-
 
 ## 🚀 Proje Hakkında
 
