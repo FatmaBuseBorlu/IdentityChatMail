@@ -2,21 +2,6 @@
 <h1 style="border-bottom: none;">
     📧 IdentityChatMail
   </h1>
-  <p>
-    <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/mvc">
-      <img src="https://img.shields.io/badge/.NET%20Core-6.0%20%2F%208.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET Core">
-    </a>
-    <a href="https://getbootstrap.com/">
-      <img src="https://img.shields.io/badge/Bootstrap-5-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
-    </a>
-    <a href="https://www.microsoft.com/en-us/sql-server">
-      <img src="https://img.shields.io/badge/MSSQL-Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" alt="MSSQL">
-    </a>
-    <a href="https://learn.microsoft.com/en-us/ef/">
-      <img src="https://img.shields.io/badge/Entity%20Framework-Code%20First-blue?style=for-the-badge&logo=nuget&logoColor=white" alt="EF Core">
-    </a>
-  </p>
-
   <br>
 </div>
 
