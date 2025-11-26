@@ -17,11 +17,10 @@ Proje, standart bir CRUD uygulamasının ötesine geçerek; **Soft Delete (Çöp
     * **Gelen & Giden Kutusu:** Kullanıcılar sistemdeki diğer kullanıcılara mail gönderebilir ve gelenleri okuyabilir.
     * **Akıllı Cevapla (Reply):** Gelen mesaja "Cevapla" denildiğinde, alıcı adresi ve konu başlığı (Re: formatında) otomatik olarak doldurulur.
     * **Anlık Arama:** Konu başlıklarında büyük/küçük harf duyarlılığı olmadan anlık arama yapılabilir.
-* **Soft Delete (Çöp Kutusu):** Silinen mesajlar veritabanından hemen uçmaz! Gerçek bir mail deneyimi için önce "Çöp Kutusu"na taşınır (`IsTrash`), istenirse oradan kalıcı olarak silinebilir.
-* **Favoriler (Yıldızlama):** Önemli mesajlar tek tıkla (AJAX ile sayfa yenilenmeden) yıldızlanarak ayrı bir sekmede filtrelenebilir.
+* **Soft Delete (Çöp Kutusu):** Silinen mesajlar veritabanından hemen uçmaz. Gerçek bir mail deneyimi için önce "Çöp Kutusu"na taşınır (`IsTrash`), istenirse oradan kalıcı olarak silinebilir.
+* **Favoriler (Yıldızlama):** Önemli mesajlar tek tıkla yıldızlanarak ayrı bir sekmede filtrelenebilir.
 * **Profil Yönetimi:**
     * Kullanıcılar Ad, Soyad ve Şifre bilgilerini güncelleyebilir.
-    * **Profil Resmi:** Kullanıcılar kendi profil fotoğraflarını yükleyebilir. Yüklenen fotoğraflar sunucuda (`wwwroot`) saklanır ve sistem genelinde dinamik olarak görünür.
 * **Bildirimler:** Mesaj gönderimi veya silme işlemlerinde standart, sıkıcı tarayıcı uyarıları yerine modern **SweetAlert** popup'ları kullanıldı.
 
 ---
@@ -33,7 +32,6 @@ Proje, standart bir CRUD uygulamasının ötesine geçerek; **Soft Delete (Çöp
 * **ORM:** Entity Framework Core (Code First Yaklaşımı)
 * **Authentication:** ASP.NET Core Identity
 * **Frontend:** HTML5, CSS3, Bootstrap, jQuery
-* **Kütüphaneler:** SweetAlert2, FontAwesome
 
 ---
 
