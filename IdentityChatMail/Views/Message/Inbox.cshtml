@@ -100,21 +100,17 @@
 
 @section Scripts {
     <script>
-        // Yıldızlama işlemini arka planda yapan fonksiyon
         function yildizla(id) {
             $.get("/Message/MakeImportant/" + id);
         }
 
         $(document).ready(function() {
-
-            // Yıldız animasyonu (Tıklayınca anlık renk değişimi)
             $(".star-toggle").click(function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 $(this).toggleClass("text-warning");
             });
 
-            // Checkbox tıklamasını engelleme
             $(".email-checkbox input").click(function(e) {
                 e.stopPropagation();
             });

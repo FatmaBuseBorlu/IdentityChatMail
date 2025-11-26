@@ -96,13 +96,11 @@
 
 @section Scripts {
     <script>
-        // Yıldız durumunu değiştiren fonksiyon
         function yildizla(id) {
             $.get("/Message/MakeImportant/" + id);
         }
 
         $(document).ready(function() {
-            // Yıldız animasyonu (Tıklayınca rengi sönsün/yansın)
             $(".star-toggle").click(function (e) {
                 e.preventDefault();
                 e.stopPropagation();

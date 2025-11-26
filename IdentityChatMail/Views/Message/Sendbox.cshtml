@@ -102,26 +102,21 @@
 
 @section Scripts {
     <script>
-        // Yıldızlama Fonksiyonu
         function yildizla(id) {
             $.get("/Message/MakeImportant/" + id);
         }
 
         $(document).ready(function() {
-            // SweetAlert (Mesaj gönderilince çıkan uyarı)
             var durum = '@TempData["Durum"]';
             if (durum == "ok") {
                 swal("Başarılı!", "Mesajınız başarıyla gönderildi.", "success");
             }
 
-            // Yıldız Animasyonu
             $(".star-toggle").click(function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 $(this).toggleClass("text-warning");
             });
-
-            // Checkbox Tıklama
             $(".email-checkbox input").click(function(e) {
                 e.stopPropagation();
             });
