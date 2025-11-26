@@ -35,22 +35,34 @@ Proje, standart bir CRUD uygulamasının ötesine geçerek; **Soft Delete (Çöp
 
 ## 📸 Proje Görselleri
 
-Uygulamanın modern arayüzünden kareler:
+Uygulamanın tüm arayüz ve özelliklerinden kareler:
 
-| 🔐 Giriş Ekranı | 📩 Gelen Kutusu (Inbox) |
+| 🔐 Giriş Ekranı | 📝 Kayıt Ol Ekranı |
 | :---: | :---: |
-| <img src="GÖRSEL_LINKI_BURAYA_1" width="400"> | <img src="GÖRSEL_LINKI_BURAYA_2" width="400"> |
-| *Sadeleştirilmiş Login* | *İsimsiz, Konu Odaklı Liste* |
+| <img src="Görseller/Login.png" width="400"> | <img src="Görseller/Register.png" width="400"> |
+| *Kullanıcı Girişi* | *Yeni Kullanıcı Kaydı* |
 
-| 📝 Mesaj Oluştur | 📖 Mesaj Okuma |
+| 📩 Gelen Kutusu (Inbox) | 📤 Gönderilmiş Postalar |
 | :---: | :---: |
-| <img src="GÖRSEL_LINKI_BURAYA_3" width="400"> | <img src="GÖRSEL_LINKI_BURAYA_4" width="400"> |
-| *Odaklanmış Form Yapısı* | *Tam Ekran Okuma & Aksiyonlar* |
+| <img src="Görseller/Homepage.png" width="400"> | <img src="Görseller/SendBox.png" width="400"> |
+| *Gelen Mesajlar Listesi* | *Giden Mesajlar Listesi* |
 
-| 🗑️ Çöp Kutusu | |
+| ✍️ Yeni Mesaj Oluştur | ⭐ Yıldızlı Mesajlar |
 | :---: | :---: |
-| <img src="GÖRSEL_LINKI_BURAYA_5" width="400"> | |
-| *Silinen Mesaj Yönetimi* | |
+| <img src="Görseller/Create%20Message.png" width="400"> | <img src="Görseller/Starred%20Message.png" width="400"> |
+| *Mesaj Gönderme Formu* | *Favorilere Eklenenler* |
 
+| 👤 Profil Sayfası | 🗑️ Çöp Kutusu |
+| :---: | :---: |
+| <img src="Görseller/Profile.png" width="400"> | <img src="Görseller/Trash.png" width="400"> |
+| *Kişisel Bilgi Güncelleme* | *Silinen Mesajlar* |
 
+| 🔍 Arama Sonucu | ✅ Başarılı İşlem |
+| :---: | :---: |
+| <img src="Görseller/Search.png" width="400"> | <img src="Görseller/Successful%20query.png" width="400"> |
+| *Konu Başlığına Göre Filtreleme* | *SweetAlert Başarılı Bildirimi* |
 
+| ⚠️ Silme Onayı | |
+| :---: | :---: |
+| <img src="Görseller/Delete%20query.png" width="400"> | |
+| *Silme İşlemi İçin Onay Penceresi* | |
