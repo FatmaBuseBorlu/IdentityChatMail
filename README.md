@@ -1,6 +1,4 @@
 <div align="center">
-
-  <img src="https://cdn-icons-png.flaticon.com/512/9069/9069049.png" alt="IdentityMail Logo" width="120" height="120" />
   
   <h1>📧 IdentityMail</h1>
   
