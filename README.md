@@ -1,7 +1,5 @@
 <h1 style="border-bottom: none;">📧 IdentityChatMail</h1>
 
----
-
 ## 🚀 Proje Hakkında
 
 **IdentityMail**, ASP.NET Core altyapısı üzerine kurgulanmış, modern Quixlab admin teması ile giydirilmiş bir iç mesajlaşma (mail) simülasyonudur.
