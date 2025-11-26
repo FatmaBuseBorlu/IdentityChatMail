@@ -29,7 +29,6 @@
                                     <form action="/Message/Inbox" method="get">
                                         <div class="input-group">
                                             <input type="text" name="p" class="form-control" placeholder="Konu başlığında ara..." value="@ViewBag.SearchTerm">
-
                                             <div class="input-group-append">
                                                 <button class="btn btn-dark" type="submit"><i class="fa fa-search"></i> Ara</button>
                                             </div>
@@ -42,15 +41,17 @@
                         <div class="email-list m-t-15">
                             @if (Model.Count == 0)
                             {
-                                <div class="alert alert-warning mt-3">
-                                    <i class="fa fa-info-circle"></i> Gelen kutunuzda hiç mesaj yok.
+                                <div class="text-center pt-5 pb-5">
+                                    <i class="fa fa-inbox fa-5x text-muted mb-4" style="opacity: 0.5;"></i>
+                                    <h4 class="text-muted">Gelen Kutunuz Boş</h4>
+                                    <p class="text-muted">Şu an size gelen yeni bir mesaj bulunmuyor.</p>
                                 </div>
                             }
                             else
                             {
                                 foreach (var item in Model)
                                 {
-                                    <div class="message">
+                                    <div class="message @(item.IsRead ? "" : "unread")">
                                         <a href="/Message/MessageDetail/@item.MessageId">
 
                                             <div class="col-mail col-mail-1">
@@ -58,7 +59,6 @@
                                                     <input type="checkbox" id="chk-@item.MessageId">
                                                     <label class="toggle" for="chk-@item.MessageId"></label>
                                                 </div>
-
                                                 <span class="star-toggle ti-star @(item.IsImportant ? "text-warning" : "")" onclick="yildizla(@item.MessageId)"></span>
                                             </div>
 
@@ -70,9 +70,9 @@
 
                                                     <span style="color: #888;">
                                                         -
-                                                        @if (!string.IsNullOrEmpty(item.MessageDetail) && item.MessageDetail.Length > 40)
+                                                        @if (!string.IsNullOrEmpty(item.MessageDetail) && item.MessageDetail.Length > 50)
                                                         {
-                                                            <span>@item.MessageDetail.Substring(0, 40)...</span>
+                                                            <span>@item.MessageDetail.Substring(0, 50)...</span>
                                                         }
                                                         else
                                                         {
@@ -105,6 +105,12 @@
         }
 
         $(document).ready(function() {
+            var durum = '@TempData["Durum"]';
+            if (durum == "ok") {
+                if (typeof swal !== 'undefined') {
+                     swal("Başarılı!", "İşlem başarıyla gerçekleşti.", "success");
+                }
+            }
             $(".star-toggle").click(function (e) {
                 e.preventDefault();
                 e.stopPropagation();

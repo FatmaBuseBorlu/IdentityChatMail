@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace IdentityChatMail.Controllers
 {
@@ -26,50 +27,51 @@ namespace IdentityChatMail.Controllers
         }
         public async Task<IActionResult> Inbox(string p)
         {
-            ViewBag.SearchTerm = p;
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            var messageList = _context.Messages
-                .Where(x => x.ReceiverEmail == values.Email && x.IsTrash == false)
-                .OrderByDescending(x => x.MessageId) 
-                .ToList();
+            ViewBag.SearchTerm = p;
+            var query = _context.Messages.AsQueryable();
+            query = query.Where(x => x.ReceiverEmail == values.Email && x.IsTrash == false);
             if (!string.IsNullOrEmpty(p))
             {
-                p = p.ToLower();
-                messageList = messageList.Where(x => x.Subject != null && x.Subject.ToLower().Contains(p)).ToList();
+                query = query.Where(x => x.Subject.Contains(p));
             }
-            return View(messageList);
+            var result = query.OrderByDescending(x => x.MessageId).ToList();
+            return View(result);
         }
         public async Task<IActionResult> Sendbox(string p)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            string email = values.Email;
+            ViewBag.SearchTerm = p;
 
-            var sendMessageList = _context.Messages
-                .Where(x => x.SenderEmail == values.Email && x.IsTrash == false)
-                .OrderByDescending(x => x.MessageId)
-                .ToList();
+            var query = _context.Messages.AsQueryable();
+            query = query.Where(x => x.SenderEmail == values.Email && x.IsTrash == false);
 
             if (!string.IsNullOrEmpty(p))
             {
-                p = p.ToLower();
-                sendMessageList = sendMessageList.Where(x => x.Subject != null && x.Subject.ToLower().Contains(p)).ToList();
+                query = query.Where(x => x.Subject.Contains(p));
             }
-            return View(sendMessageList);
+
+            var result = query.OrderByDescending(x => x.MessageId).ToList();
+            return View(result);
         }
         public async Task<IActionResult> Trash(string p)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            var trashList = _context.Messages
-                    .Where(x => (x.ReceiverEmail == values.Email || x.SenderEmail == values.Email) && x.IsTrash == true)
-                    .OrderByDescending(x => x.MessageId)
-                    .ToList();
+            ViewBag.SearchTerm = p;
+
+            var query = _context.Messages.AsQueryable();
+
+            // Temel Şartlar: (Alıcı VEYA Gönderen benim) VE Çöpte
+            query = query.Where(x => (x.ReceiverEmail == values.Email || x.SenderEmail == values.Email) && x.IsTrash == true);
+
             if (!string.IsNullOrEmpty(p))
             {
-                p = p.ToLower();
-                trashList = trashList.Where(x => x.Subject != null && x.Subject.ToLower().Contains(p)).ToList();
+                query = query.Where(x => x.Subject.Contains(p));
             }
 
-            return View(trashList);
+            var result = query.OrderByDescending(x => x.MessageId).ToList();
+
+            return View(result);
         }
         public IActionResult CreateMessage(string? alici, string? konu)
         {
@@ -121,16 +123,19 @@ namespace IdentityChatMail.Controllers
         public async Task<IActionResult> Important(string p)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            var importantList = _context.Messages
-          .Where(x => (x.ReceiverEmail == values.Email || x.SenderEmail == values.Email) && x.IsTrash == false && x.IsImportant == true)
-          .OrderByDescending(x => x.MessageId)
-          .ToList();
+            ViewBag.SearchTerm = p;
+
+            var query = _context.Messages.AsQueryable();
+            query = query.Where(x => (x.ReceiverEmail == values.Email || x.SenderEmail == values.Email) && x.IsTrash == false && x.IsImportant == true);
+
             if (!string.IsNullOrEmpty(p))
             {
-                p = p.ToLower();
-                importantList = importantList.Where(x => x.Subject != null && x.Subject.ToLower().Contains(p)).ToList();
+                query = query.Where(x => x.Subject.Contains(p));
             }
-            return View(importantList);
+
+            var result = query.OrderByDescending(x => x.MessageId).ToList();
+
+            return View(result);
         }
         public IActionResult MakeImportant(int id)
         {

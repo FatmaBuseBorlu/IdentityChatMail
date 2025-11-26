@@ -28,7 +28,8 @@ namespace IdentityChatMail.Controllers
                 Name = model.Name,
                 Surname = model.Surname,
                 Email = model.Email,
-                UserName = model.Username
+                UserName = model.Username,
+                ProfileImageUrl = "/quixlab-master/images/user/1.png"
 
             };
             var result = await _userManager.CreateAsync(appUser, model.Password);
@@ -43,7 +44,7 @@ namespace IdentityChatMail.Controllers
                 {
                     ModelState.AddModelError("", item.Description);
                 }
-                return View();
+                return View(model);
             }
         }
     }
