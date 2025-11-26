@@ -74,29 +74,6 @@ Uygulamanın modern arayüzünden kareler:
 
 ---
 
-## 🛠️ Kurulum ve Çalıştırma
-
-Bu projeyi yerel makinenizde çalıştırmak için adımları takip edin:
-
-1.  **Repoyu Klonlayın**
-    ```bash
-    git clone [https://github.com/kullaniciadiniz/IdentityMail.git](https://github.com/kullaniciadiniz/IdentityMail.git)
-    ```
-
-2.  **Veritabanı Bağlantısı**
-    `appsettings.json` dosyasındaki bağlantı dizesini kendi SQL Server'ınıza göre düzenleyin.
-
-3.  **Migration İşlemi**
-    Package Manager Console'u açın ve veritabanını oluşturun:
-    ```powershell
-    update-database
-    ```
-
-4.  **Çalıştırın**
-    Projeyi başlatın ve `https://localhost:xxxx` adresine gidin.
-
----
-
 ## 👨‍💻 Geliştirici Notu
 
 > Bu proje, bir Admin Temasının MVC mimarisine **"Best Practice"** (En İyi Uygulama) yöntemleriyle nasıl giydirileceğini ve kullanıcı deneyiminin (UX) backend kodlarıyla nasıl destekleneceğini göstermek amacıyla geliştirilmiştir.
