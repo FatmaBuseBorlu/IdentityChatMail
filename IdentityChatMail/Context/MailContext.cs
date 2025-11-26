@@ -9,7 +9,7 @@ namespace IdentityChatMail.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-NBRMDOS; initial Catalog=EmailChatDb;integrated Security=true;trust server certificate=true");
-
         }
+        public DbSet<Message> Messages { get; set; }
     }
 }

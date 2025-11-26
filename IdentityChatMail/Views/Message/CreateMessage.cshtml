@@ -1,0 +1,22 @@
+﻿@model IdentityChatMail.Entities.Message
+
+@{
+    Layout = "~/Views/Shared/_MessageLayout.cshtml";
+}
+
+<div class="container">
+    <br />
+    <br />
+<form method="post">
+        <label>Alıcı Email</label>
+        <input type="text" asp-for="ReceiverEmail" class="form-control" />
+        <br />
+        <label>Konu</label>
+        <input type="text" asp-for="Subject" class="form-control" />
+        <br />
+        <label>Mesajınız</label>
+        <input type="text" asp-for="MessageDetail" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Mesajı Gönder</button>
+    </form>
+</div>

@@ -1,0 +1,28 @@
+﻿@model List<IdentityChatMail.Entities.Message>
+
+@{
+    ViewData["Title"] = "Sendbox";
+    Layout = "~/Views/Shared/_MessageLayout.cshtml";
+    int count = 0;
+}
+
+<h2>Gönderilen Mesajlar</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Alıcı Email</th>
+        <th>Konu</th>
+        <th>Mesajı Aç</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.ReceiverEmail</td>
+            <td>@item.Subject</td>
+            <td><a href="/Message/MessageDetail/@item.MessageId" class="btn btn-warning">Mesajı Aç</a></td>
+        </tr>
+    }
+</table>
