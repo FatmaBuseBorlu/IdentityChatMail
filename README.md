@@ -37,32 +37,50 @@ Proje, standart bir CRUD uygulamasının ötesine geçerek; **Soft Delete (Çöp
 
 Uygulamanın tüm arayüz ve özelliklerinden kareler:
 
-| 🔐 Giriş Ekranı | 📝 Kayıt Ol Ekranı |
-| :---: | :---: |
-| <img src="Görseller/Login.png" width="400"> | <img src="Görseller/Register.png" width="400"> |
-| *Kullanıcı Girişi* | *Yeni Kullanıcı Kaydı* |
+<div align="center">
 
-| 📩 Gelen Kutusu (Inbox) | 📤 Gönderilmiş Postalar |
-| :---: | :---: |
-| <img src="Görseller/Homepage.png" width="400"> | <img src="Görseller/SendBox.png" width="400"> |
-| *Gelen Mesajlar Listesi* | *Giden Mesajlar Listesi* |
+  <h3>🔐 Giriş ve Kayıt İşlemleri</h3>
+  <p>Quixlab temasının sadeleştirilmiş, tam ekran login ve register arayüzü.</p>
+  <img src="Görseller/Login.png" width="700">
+  <br><br>
+  <img src="Görseller/Register.png" width="700">
 
-| ✍️ Yeni Mesaj Oluştur | ⭐ Yıldızlı Mesajlar |
-| :---: | :---: |
-| <img src="Görseller/Create%20Message.png" width="400"> | <img src="Görseller/Starred%20Message.png" width="400"> |
-| *Mesaj Gönderme Formu* | *Favorilere Eklenenler* |
+  <br><br><hr><br>
 
-| 👤 Profil Sayfası | 🗑️ Çöp Kutusu |
-| :---: | :---: |
-| <img src="Görseller/Profile.png" width="400"> | <img src="Görseller/Trash.png" width="400"> |
-| *Kişisel Bilgi Güncelleme* | *Silinen Mesajlar* |
+  <h3>📩 Mesajlaşma (Gelen & Giden Kutusu)</h3>
+  <p>Kullanıcı dostu liste yapısı. İsimsiz, konu odaklı ve sadeleştirilmiş görünüm.</p>
+  <img src="Görseller/Homepage.png" width="700">
+  <br><br>
+  <img src="Görseller/SendBox.png" width="700">
 
-| 🔍 Arama Sonucu | ✅ Başarılı İşlem |
-| :---: | :---: |
-| <img src="Görseller/Search.png" width="400"> | <img src="Görseller/Successful%20query.png" width="400"> |
-| *Konu Başlığına Göre Filtreleme* | *SweetAlert Başarılı Bildirimi* |
+  <br><br><hr><br>
 
-| ⚠️ Silme Onayı | |
-| :---: | :---: |
-| <img src="Görseller/Delete%20query.png" width="400"> | |
-| *Silme İşlemi İçin Onay Penceresi* | |
+  <h3>📝 Mesaj Oluşturma & Okuma</h3>
+  <p>Odaklanmış form yapısı ve detaylı mesaj okuma ekranı.</p>
+  <img src="Görseller/Create%20Message.png" width="700">
+  <br><br>
+  <img src="Görseller/MessageDetail.png" width="700"> <br><br><hr><br>
+
+  <h3>⭐ Favoriler & 🗑️ Çöp Kutusu</h3>
+  <p>Önemli mesajların filtrelenmesi ve silinen mesajların yönetimi.</p>
+  <img src="Görseller/Starred%20Message.png" width="700">
+  <br><br>
+  <img src="Görseller/Trash.png" width="700">
+
+  <br><br><hr><br>
+
+  <h3>👤 Profil Yönetimi</h3>
+  <p>Kullanıcıların kişisel bilgilerini ve fotoğraflarını güncelleyebildiği kart yapısı.</p>
+  <img src="Görseller/Profile.png" width="700">
+
+  <br><br><hr><br>
+
+  <h3>✅ Bildirimler & Arama</h3>
+  <p>SweetAlert ile modern bildirimler ve konu başlığına göre anlık arama.</p>
+  <img src="Görseller/Search.png" width="700">
+  <br><br>
+  <img src="Görseller/Successful%20query.png" width="700">
+  <br><br>
+  <img src="Görseller/Delete%20query.png" width="700">
+
+</div>
