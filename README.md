@@ -59,7 +59,7 @@ Uygulamanın tüm arayüz ve özelliklerinden kareler:
   <p>Odaklanmış form yapısı ve detaylı mesaj okuma ekranı.</p>
   <img src="Görseller/Create%20Message.png" width="700">
   <br><br>
-  <img src="Görseller/MessageDetail.png" width="700"> <br><br><hr><br>
+  <img src="Görseller/Message%20Details.png" width="700"> <br><br><hr><br>
 
   <h3>⭐ Favoriler & 🗑️ Çöp Kutusu</h3>
   <p>Önemli mesajların filtrelenmesi ve silinen mesajların yönetimi.</p>
