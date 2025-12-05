@@ -40,47 +40,57 @@ Uygulamanın tüm arayüz ve özelliklerinden kareler:
 <div align="center">
 
   <h3>🔐 Giriş ve Kayıt İşlemleri</h3>
-  <p>Quixlab temasının sadeleştirilmiş, tam ekran login ve register arayüzü.</p>
-  <img src="Görseller/Login.png" width="700">
+  <img src="Görseller/Login.png" width="100%" style="max-width: 800px;" alt="Giriş Ekranı">
+  <br><i>Quixlab temasının sadeleştirilmiş, tam ekran login arayüzü</i>
   <br><br>
-  <img src="Görseller/Register.png" width="700">
-
+  
+  <img src="Görseller/Register.png" width="100%" style="max-width: 800px;" alt="Kayıt Ekranı">
+  <br><i>Kullanıcı kayıt (register) ekranı</i>
   <br><br><hr><br>
 
   <h3>📩 Mesajlaşma (Gelen & Giden Kutusu)</h3>
-  <p>Kullanıcı dostu liste yapısı. İsimsiz, konu odaklı ve sadeleştirilmiş görünüm.</p>
-  <img src="Görseller/Homepage.png" width="700">
+  <img src="Görseller/Homepage.png" width="100%" style="max-width: 800px;" alt="Gelen Kutusu">
+  <br><i>Kullanıcı dostu liste yapısı, isimsiz ve konu odaklı görünüm</i>
   <br><br>
-  <img src="Görseller/SendBox.png" width="700">
 
+  <img src="Görseller/SendBox.png" width="100%" style="max-width: 800px;" alt="Giden Kutusu">
+  <br><i>Gönderilen mesajlar listesi</i>
   <br><br><hr><br>
 
   <h3>📝 Mesaj Oluşturma & Okuma</h3>
-  <p>Odaklanmış form yapısı ve detaylı mesaj okuma ekranı.</p>
-  <img src="Görseller/Create%20Message.png" width="700">
+  <img src="Görseller/Create%20Message.png" width="100%" style="max-width: 800px;" alt="Mesaj Oluşturma">
+  <br><i>Odaklanmış form yapısı ile yeni mesaj oluşturma</i>
   <br><br>
-  <img src="Görseller/Message%20Details.png" width="700"> <br><br><hr><br>
+
+  <img src="Görseller/Message%20Details.png" width="100%" style="max-width: 800px;" alt="Mesaj Detayı">
+  <br><i>Detaylı mesaj okuma ekranı</i>
+  <br><br><hr><br>
 
   <h3>⭐ Favoriler & 🗑️ Çöp Kutusu</h3>
-  <p>Önemli mesajların filtrelenmesi ve silinen mesajların yönetimi.</p>
-  <img src="Görseller/Starred%20Message.png" width="700">
+  <img src="Görseller/Starred%20Message.png" width="100%" style="max-width: 800px;" alt="Favoriler">
+  <br><i>Önemli mesajların filtrelenmesi</i>
   <br><br>
-  <img src="Görseller/Trash.png" width="700">
 
+  <img src="Görseller/Trash.png" width="100%" style="max-width: 800px;" alt="Çöp Kutusu">
+  <br><i>Silinen mesajların yönetimi</i>
   <br><br><hr><br>
 
   <h3>👤 Profil Yönetimi</h3>
-  <p>Kullanıcıların kişisel bilgilerini ve fotoğraflarını güncelleyebildiği kart yapısı.</p>
-  <img src="Görseller/Profile.png" width="700">
-
+  <img src="Görseller/Profile.png" width="100%" style="max-width: 800px;" alt="Profil Sayfası">
+  <br><i>Kullanıcıların kişisel bilgilerini ve fotoğraflarını güncelleyebildiği kart yapısı</i>
   <br><br><hr><br>
 
   <h3>✅ Bildirimler & Arama</h3>
-  <p>SweetAlert ile modern bildirimler ve konu başlığına göre anlık arama.</p>
-  <img src="Görseller/Search.png" width="700">
+  <img src="Görseller/Search.png" width="100%" style="max-width: 800px;" alt="Arama İşlemi">
+  <br><i>Konu başlığına göre anlık arama</i>
   <br><br>
-  <img src="Görseller/Successful%20query.png" width="700">
+
+  <img src="Görseller/Successful%20query.png" width="100%" style="max-width: 800px;" alt="Başarılı İşlem">
+  <br><i>SweetAlert ile modern başarı bildirimi</i>
   <br><br>
-  <img src="Görseller/Delete%20query.png" width="700">
+
+  <img src="Görseller/Delete%20query.png" width="100%" style="max-width: 800px;" alt="Silme İşlemi">
+  <br><i>Silme işlemi onay ekranı</i>
+  <br><br>
 
 </div>
