@@ -47,7 +47,7 @@ IdentityChatMail/
 │   ├── wwwroot/
 │   ├── Program.cs
 │   └── IdentityChatMail.csproj
-├── Gorseller/
+├── Görseller/
 └── README.md
 ```
 
