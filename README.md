@@ -1,96 +1,226 @@
-<h1 style="border-bottom: none;">📧 IdentityChatMail</h1>
+# IdentityChatMail
 
-## 🚀 Proje Hakkında
+IdentityChatMail is an ASP.NET Core MVC application that simulates an internal mail and messaging system. It includes user registration/login with ASP.NET Core Identity, inbox and sent message flows, soft delete, favorites, profile management, search, and a customized Quixlab-based UI.
 
-**IdentityMail**, ASP.NET Core altyapısı üzerine kurgulanmış, modern Quixlab admin teması ile giydirilmiş bir iç mesajlaşma (mail) simülasyonudur.
+The project is useful as a portfolio example for learning and demonstrating ASP.NET Core MVC, Entity Framework Core Code First, SQL Server, Identity authentication, and CRUD-oriented web application development.
 
-Proje, standart bir CRUD uygulamasının ötesine geçerek; **Soft Delete (Çöp Kutusu)**, **Favorilere Ekleme (Yıldızlama)**, **Akıllı Arama** ve **Profil Yönetimi** gibi gelişmiş özellikleri barındırır. Identity kütüphanesi ile güvenli bir kullanıcı altyapısı sunar.
+## Features
 
----
+- User registration and login with ASP.NET Core Identity
+- Inbox and sent message management
+- Message detail view
+- Reply flow with automatically filled recipient and subject
+- Soft delete flow with trash folder
+- Permanent delete from trash
+- Favorite/starred messages
+- Case-insensitive subject search
+- User profile update screen
+- SweetAlert-based user notifications
+- Customized Quixlab admin theme integration
 
-## 🔥 Temel Özellikler
+## Tech Stack
 
-* **Modern UI/UX:** Quixlab teması projenin ihtiyaçlarına göre özel olarak revize edildi. Gereksiz menüler atıldı, kullanıcıyı yormayan sade ve odaklı bir yapı kuruldu.
-* **Mesajlaşma Sistemi:**
-    * **Gelen & Giden Kutusu:** Kullanıcılar sistemdeki diğer kullanıcılara mail gönderebilir ve gelenleri okuyabilir.
-    * **Akıllı Cevapla (Reply):** Gelen mesaja "Cevapla" denildiğinde, alıcı adresi ve konu başlığı (Re: formatında) otomatik olarak doldurulur.
-    * **Anlık Arama:** Konu başlıklarında büyük/küçük harf duyarlılığı olmadan anlık arama yapılabilir.
-* **Soft Delete (Çöp Kutusu):** Silinen mesajlar veritabanından hemen uçmaz. Gerçek bir mail deneyimi için önce "Çöp Kutusu"na taşınır (`IsTrash`), istenirse oradan kalıcı olarak silinebilir.
-* **Favoriler (Yıldızlama):** Önemli mesajlar tek tıkla yıldızlanarak ayrı bir sekmede filtrelenebilir.
-* **Profil Yönetimi:**
-    * Kullanıcılar Ad, Soyad ve Şifre bilgilerini güncelleyebilir.
-* **Bildirimler:** Mesaj gönderimi veya silme işlemlerinde standart, sıkıcı tarayıcı uyarıları yerine modern **SweetAlert** popup'ları kullanıldı.
+- ASP.NET Core MVC 8.0
+- C#
+- Entity Framework Core
+- EF Core Code First Migrations
+- ASP.NET Core Identity
+- SQL Server
+- Razor Views
+- HTML5, CSS3, Bootstrap, jQuery
+- SweetAlert
+- Quixlab Admin Template
 
----
+## Project Structure
 
-## 🛠️ Teknik Detaylar
+```text
+IdentityChatMail/
+├── IdentityChatMail.sln
+├── IdentityChatMail/
+│   ├── Context/
+│   │   └── MailContext.cs
+│   ├── Controllers/
+│   ├── Entities/
+│   ├── Migrations/
+│   ├── Models/
+│   ├── Views/
+│   ├── wwwroot/
+│   ├── Program.cs
+│   └── IdentityChatMail.csproj
+├── Gorseller/
+└── README.md
+```
 
-* **Framework:** .NET 6.0 / .NET 8.0 (Core MVC)
-* **Veritabanı:** MSSQL Server
-* **ORM:** Entity Framework Core (Code First Yaklaşımı)
-* **Authentication:** ASP.NET Core Identity
-* **Frontend:** HTML5, CSS3, Bootstrap, jQuery
+## Requirements
 
----
+Before running the project, make sure the following tools are installed:
 
-## 📸 Proje Görselleri
+- .NET 8 SDK
+- SQL Server, SQL Server Express, or LocalDB
+- Visual Studio 2022 or Visual Studio Code
+- EF Core CLI tools
 
-Uygulamanın tüm arayüz ve özelliklerinden kareler:
+Install EF Core CLI tools if they are not already installed:
+
+```bash
+dotnet tool install --global dotnet-ef
+```
+
+If the tool is already installed, update it:
+
+```bash
+dotnet tool update --global dotnet-ef
+```
+
+## Database Setup
+
+The project uses SQL Server with Entity Framework Core Code First migrations.
+
+The current database configuration is defined in:
+
+```text
+IdentityChatMail/Context/MailContext.cs
+```
+
+Current connection string:
+
+```csharp
+Server=DESKTOP-NBRMDOS; initial Catalog=EmailChatDb;integrated Security=true;trust server certificate=true
+```
+
+Before running the project locally, update the `Server` value according to your SQL Server setup. Examples:
+
+For SQL Server Express:
+
+```csharp
+Server=.\\SQLEXPRESS; initial Catalog=EmailChatDb;integrated Security=true;trust server certificate=true
+```
+
+For LocalDB:
+
+```csharp
+Server=(localdb)\\MSSQLLocalDB; initial Catalog=EmailChatDb;integrated Security=true;trust server certificate=true
+```
+
+After updating the connection string, apply migrations:
+
+```bash
+dotnet ef database update --project IdentityChatMail/IdentityChatMail.csproj --startup-project IdentityChatMail/IdentityChatMail.csproj
+```
+
+This command creates the `EmailChatDb` database and required Identity/message tables.
+
+## How to Run
+
+Clone the repository:
+
+```bash
+git clone https://github.com/FatmaBuseBorlu/IdentityChatMail.git
+```
+
+Navigate into the project folder:
+
+```bash
+cd IdentityChatMail
+```
+
+Restore dependencies:
+
+```bash
+dotnet restore
+```
+
+Apply database migrations:
+
+```bash
+dotnet ef database update --project IdentityChatMail/IdentityChatMail.csproj --startup-project IdentityChatMail/IdentityChatMail.csproj
+```
+
+Run the application:
+
+```bash
+dotnet run --project IdentityChatMail/IdentityChatMail.csproj
+```
+
+Open the application in your browser using the localhost URL shown in the terminal.
+
+## Usage Flow
+
+1. Register a new user.
+2. Log in with the created account.
+3. Create another user to test message sending between users.
+4. Send messages between users.
+5. Test inbox, sent box, reply, favorite, trash, search, and profile update flows.
+
+## Screenshots
+
+### Login and Register
 
 <div align="center">
-
-  <h3>🔐 Giriş ve Kayıt İşlemleri</h3>
-  <img src="Görseller/Login.png" width="100%" style="max-width: 800px;" alt="Giriş Ekranı">
-  <br><i>Quixlab temasının sadeleştirilmiş, tam ekran login arayüzü</i>
+  <img src="Görseller/Login.png" width="100%" style="max-width: 800px;" alt="Login Screen">
   <br><br>
-  
-  <img src="Görseller/Register.png" width="100%" style="max-width: 800px;" alt="Kayıt Ekranı">
-  <br><i>Kullanıcı kayıt (register) ekranı</i>
-  <br><br><hr><br>
-
-  <h3>📩 Mesajlaşma (Gelen & Giden Kutusu)</h3>
-  <img src="Görseller/Homepage.png" width="100%" style="max-width: 800px;" alt="Gelen Kutusu">
-  <br><i>Kullanıcı dostu liste yapısı, isimsiz ve konu odaklı görünüm</i>
-  <br><br>
-
-  <img src="Görseller/SendBox.png" width="100%" style="max-width: 800px;" alt="Giden Kutusu">
-  <br><i>Gönderilen mesajlar listesi</i>
-  <br><br><hr><br>
-
-  <h3>📝 Mesaj Oluşturma & Okuma</h3>
-  <img src="Görseller/Create%20Message.png" width="100%" style="max-width: 800px;" alt="Mesaj Oluşturma">
-  <br><i>Odaklanmış form yapısı ile yeni mesaj oluşturma</i>
-  <br><br>
-
-  <img src="Görseller/Message%20Details.png" width="100%" style="max-width: 800px;" alt="Mesaj Detayı">
-  <br><i>Detaylı mesaj okuma ekranı</i>
-  <br><br><hr><br>
-
-  <h3>⭐ Favoriler & 🗑️ Çöp Kutusu</h3>
-  <img src="Görseller/Starred%20Message.png" width="100%" style="max-width: 800px;" alt="Favoriler">
-  <br><i>Önemli mesajların filtrelenmesi</i>
-  <br><br>
-
-  <img src="Görseller/Trash.png" width="100%" style="max-width: 800px;" alt="Çöp Kutusu">
-  <br><i>Silinen mesajların yönetimi</i>
-  <br><br><hr><br>
-
-  <h3>👤 Profil Yönetimi</h3>
-  <img src="Görseller/Profile.png" width="100%" style="max-width: 800px;" alt="Profil Sayfası">
-  <br><i>Kullanıcıların kişisel bilgilerini ve fotoğraflarını güncelleyebildiği kart yapısı</i>
-  <br><br><hr><br>
-
-  <h3>✅ Bildirimler & Arama</h3>
-  <img src="Görseller/Search.png" width="100%" style="max-width: 800px;" alt="Arama İşlemi">
-  <br><i>Konu başlığına göre anlık arama</i>
-  <br><br>
-
-  <img src="Görseller/Successful%20query.png" width="100%" style="max-width: 800px;" alt="Başarılı İşlem">
-  <br><i>SweetAlert ile modern başarı bildirimi</i>
-  <br><br>
-
-  <img src="Görseller/Delete%20query.png" width="100%" style="max-width: 800px;" alt="Silme İşlemi">
-  <br><i>Silme işlemi onay ekranı</i>
-  <br><br>
-
+  <img src="Görseller/Register.png" width="100%" style="max-width: 800px;" alt="Register Screen">
 </div>
+
+### Inbox and Sent Box
+
+<div align="center">
+  <img src="Görseller/Homepage.png" width="100%" style="max-width: 800px;" alt="Inbox">
+  <br><br>
+  <img src="Görseller/SendBox.png" width="100%" style="max-width: 800px;" alt="Sent Box">
+</div>
+
+### Create and Read Messages
+
+<div align="center">
+  <img src="Görseller/Create%20Message.png" width="100%" style="max-width: 800px;" alt="Create Message">
+  <br><br>
+  <img src="Görseller/Message%20Details.png" width="100%" style="max-width: 800px;" alt="Message Details">
+</div>
+
+### Favorites, Trash, Profile and Search
+
+<div align="center">
+  <img src="Görseller/Starred%20Message.png" width="100%" style="max-width: 800px;" alt="Starred Messages">
+  <br><br>
+  <img src="Görseller/Trash.png" width="100%" style="max-width: 800px;" alt="Trash">
+  <br><br>
+  <img src="Görseller/Profile.png" width="100%" style="max-width: 800px;" alt="Profile">
+  <br><br>
+  <img src="Görseller/Search.png" width="100%" style="max-width: 800px;" alt="Search">
+</div>
+
+### Notifications
+
+<div align="center">
+  <img src="Görseller/Successful%20query.png" width="100%" style="max-width: 800px;" alt="Success Notification">
+  <br><br>
+  <img src="Görseller/Delete%20query.png" width="100%" style="max-width: 800px;" alt="Delete Confirmation">
+</div>
+
+## What I Practiced
+
+- ASP.NET Core MVC project structure
+- User authentication with ASP.NET Core Identity
+- Entity Framework Core Code First migrations
+- SQL Server database integration
+- CRUD operations with relational entities
+- Soft delete behavior
+- Search and filtering logic
+- Profile update flow
+- Razor View-based UI development
+- Admin template customization
+
+## Future Improvements
+
+- Move the connection string from `MailContext.cs` to `appsettings.json`
+- Add role-based authorization
+- Add pagination for message lists
+- Add unread/read message status
+- Add email notification integration
+- Add unit tests for message operations
+- Add Docker support for easier local setup
+
+## Repository
+
+GitHub: https://github.com/FatmaBuseBorlu/IdentityChatMail
