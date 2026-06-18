@@ -46,6 +46,7 @@ IdentityChatMail/
 │   ├── Views/
 │   ├── wwwroot/
 │   ├── Program.cs
+│   ├── appsettings.json
 │   └── IdentityChatMail.csproj
 ├── Görseller/
 └── README.md
@@ -56,7 +57,7 @@ IdentityChatMail/
 Before running the project, make sure the following tools are installed:
 
 - .NET 8 SDK
-- SQL Server, SQL Server Express, or LocalDB
+- SQL Server, SQL Server Express, LocalDB, or SQL Server running in Docker
 - Visual Studio 2022 or Visual Studio Code
 - EF Core CLI tools
 
@@ -76,33 +77,35 @@ dotnet tool update --global dotnet-ef
 
 The project uses SQL Server with Entity Framework Core Code First migrations.
 
-The current database configuration is defined in:
+The database connection is read from:
 
 ```text
-IdentityChatMail/Context/MailContext.cs
+IdentityChatMail/appsettings.json
 ```
 
-Current connection string:
+Default local configuration:
 
-```csharp
-Server=DESKTOP-NBRMDOS; initial Catalog=EmailChatDb;integrated Security=true;trust server certificate=true
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=EmailChatDb;Trusted_Connection=True;TrustServerCertificate=True;"
+}
 ```
 
-Before running the project locally, update the `Server` value according to your SQL Server setup. Examples:
+For team or production-like usage, keep machine-specific values out of source control and override the connection string with user secrets:
 
-For SQL Server Express:
+```bash
+dotnet user-secrets init --project IdentityChatMail/IdentityChatMail.csproj
 
-```csharp
-Server=.\\SQLEXPRESS; initial Catalog=EmailChatDb;integrated Security=true;trust server certificate=true
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=localhost;Database=EmailChatDb;Trusted_Connection=True;TrustServerCertificate=True;" --project IdentityChatMail/IdentityChatMail.csproj
 ```
 
-For LocalDB:
+If you use SQL Server in Docker, use a SQL authentication connection string instead:
 
-```csharp
-Server=(localdb)\\MSSQLLocalDB; initial Catalog=EmailChatDb;integrated Security=true;trust server certificate=true
+```bash
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=localhost,1433;Database=EmailChatDb;User Id=sa;Password=Your_password123;TrustServerCertificate=True;" --project IdentityChatMail/IdentityChatMail.csproj
 ```
 
-After updating the connection string, apply migrations:
+Apply migrations:
 
 ```bash
 dotnet ef database update --project IdentityChatMail/IdentityChatMail.csproj --startup-project IdentityChatMail/IdentityChatMail.csproj
@@ -210,16 +213,16 @@ Open the application in your browser using the localhost URL shown in the termin
 - Profile update flow
 - Razor View-based UI development
 - Admin template customization
+- Environment-based configuration with `appsettings.json` and user secrets
 
 ## Future Improvements
 
-- Move the connection string from `MailContext.cs` to `appsettings.json`
 - Add role-based authorization
 - Add pagination for message lists
 - Add unread/read message status
 - Add email notification integration
 - Add unit tests for message operations
-- Add Docker support for easier local setup
+- Add Docker Compose support for easier local setup
 
 ## Repository
 
